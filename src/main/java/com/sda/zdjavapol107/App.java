@@ -10,6 +10,5 @@ public class App {
         System.out.println("Hello World!");
         List.of("", "a").stream();
 
-        System.out.println("aaa");
     }
 }
