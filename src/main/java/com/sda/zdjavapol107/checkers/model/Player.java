@@ -16,7 +16,7 @@ public class Player {
     @Column(nullable = false)
     private String name;
 
-    protected Player(String name) {
+    public Player(String name) {
         this.name = name;
     }
 }
