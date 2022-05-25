@@ -12,7 +12,7 @@ public class App {
         System.out.println("1. JAKAS GRA");
         System.out.println("2. JAKAS GRA");
         System.out.println("3. JAKAS GRA");
-        System.out.println("4. JAKAS GRA");
+        System.out.println("4. SZUBIENICA");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");
 
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +31,7 @@ public class App {
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 case 4:
-                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    System.out.println("4. SZUBIENICA ! ");
                     break;
                 default:
                     exit = true;
