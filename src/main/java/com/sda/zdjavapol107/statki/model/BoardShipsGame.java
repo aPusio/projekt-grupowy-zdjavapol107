@@ -21,12 +21,12 @@ public class BoardShipsGame {
     private UserShipsGame userOne;
     @ManyToOne
     private UserShipsGame userTwo;
-//
-//    @ManyToOne
-//    private List<PointShipsGame> playBoardUserOne;
+
+    @ManyToOne
+    private PointShipsGame playBoardUserOne;
 //    @ManyToOne
 //    private List<PointShipsGame> playBoardUserTwo;
-//
+
 //    @ManyToOne
 //    private List<ShipShipsGame> shipsUserOne;
 //    @ManyToOne
