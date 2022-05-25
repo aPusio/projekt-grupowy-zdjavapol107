@@ -18,22 +18,29 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         //TODO tutaj powinna byc pewnie jakas petla
         int gameNumber = scanner.nextInt();
+        boolean Exit = false;
 
-        switch (gameNumber){
-            case 1:
-                System.out.println("HERE SHOULD BE YOUR GAME ! ");
+        for (int i = 0;  ; i++) {
+            switch (gameNumber) {
+                case 1:
+                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    break;
+                case 2:
+                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    break;
+                case 3:
+                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    break;
+                case 4:
+                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    break;
+                default:
+                    Exit = true;
+                    break;
+            }
+            if(Exit){
                 break;
-            case 2:
-                System.out.println("HERE SHOULD BE YOUR GAME ! ");
-                break;
-            case 3:
-                System.out.println("HERE SHOULD BE YOUR GAME ! ");
-                break;
-            case 4:
-                System.out.println("HERE SHOULD BE YOUR GAME ! ");
-                break;
-            default:
-                System.out.println("WHAT ?!");
+            }
         }
         sessionFactory.close();
     }
