@@ -18,9 +18,9 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         //TODO tutaj powinna byc pewnie jakas petla
         int gameNumber = scanner.nextInt();
-        boolean Exit = false;
+        boolean exit = false;
 
-        for (int i = 0;  ; i++) {
+        for (int i = 0;  exit!=true; i++) {
             switch (gameNumber) {
                 case 1:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
@@ -35,11 +35,8 @@ public class App {
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 default:
-                    Exit = true;
+                    exit = true;
                     break;
-            }
-            if(Exit){
-                break;
             }
         }
         sessionFactory.close();
