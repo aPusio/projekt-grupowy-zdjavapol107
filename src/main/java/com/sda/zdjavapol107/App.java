@@ -10,7 +10,7 @@ public class App {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
         System.out.println("HELLO!");
         System.out.println("1. DUMMY GRA");
-        System.out.println("2. JAKAS GRA");
+        System.out.println("DUMMY EXAMPLE");
         System.out.println("3. JAKAS GRA");
         System.out.println("4. JAKAS GRA");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");
