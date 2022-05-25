@@ -15,6 +15,8 @@ public class App {
         System.out.println("4. JAKAS GRA");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");
 
+        String message = "";
+
         Scanner scanner = new Scanner(System.in);
         int gameNumber = scanner.nextInt();
         boolean exit = false;
