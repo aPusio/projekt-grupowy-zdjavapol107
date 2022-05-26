@@ -31,7 +31,7 @@ public class App {
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 case 4:
-                    System.out.println("4. SZUBIENICA ! ");
+                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 default:
                     exit = true;
