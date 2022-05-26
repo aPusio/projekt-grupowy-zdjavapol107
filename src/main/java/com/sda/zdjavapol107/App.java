@@ -10,7 +10,7 @@ public class App {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
         System.out.println("HELLO!");
         System.out.println("1. JAKAS GRA");
-        System.out.println("2. JAKAS GRA");
+        System.out.println("2. MEMORKI");
         System.out.println("3. JAKAS GRA");
         System.out.println("4. JAKAS GRA");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");
@@ -25,7 +25,7 @@ public class App {
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 case 2:
-                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    System.out.println("MEMORKI GAME ! ");
                     break;
                 case 3:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
