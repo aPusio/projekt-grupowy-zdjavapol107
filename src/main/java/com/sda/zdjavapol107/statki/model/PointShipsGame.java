@@ -19,16 +19,17 @@ public class PointShipsGame {
     private int pointId;
     private String x;
     private int y;
-//    @OneToMany(mappedBy = "localization")
-//    private ShipShipsGame shipShipsGame;
 
-    @OneToMany(mappedBy = "playBoardUserOne")
-    private List<BoardShipsGame> boardUserOne;
-//    @OneToMany(mappedBy = "playBoardUserTwo")
-//    private BoardShipsGame boardUserTwo;
+    @ManyToOne
+    private BoardShipsGame boardUserOne;
+    @ManyToOne
+    private BoardShipsGame boardUserTwo;
 
-//    @OneToMany(mappedBy = "shootsHistory")
-//    private GameHistoryShips gameHistoryShips;
+    @OneToMany(mappedBy = "localization")
+    private List<ShipShipsGame> shipShipsGame;
+
+    @ManyToOne
+    private GameHistoryShips gameHistoryShips;
 
 
 

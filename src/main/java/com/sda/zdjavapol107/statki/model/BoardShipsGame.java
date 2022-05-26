@@ -22,16 +22,16 @@ public class BoardShipsGame {
     @ManyToOne
     private UserShipsGame userTwo;
 
-    @ManyToOne
-    private PointShipsGame playBoardUserOne;
-//    @ManyToOne
-//    private List<PointShipsGame> playBoardUserTwo;
+    @OneToMany(mappedBy = "boardUserOne")
+    private List<PointShipsGame> playBoardUserOne;
+    @OneToMany(mappedBy = "boardUserTwo")
+    private List<PointShipsGame> playBoardUserTwo;
 
-//    @ManyToOne
-//    private List<ShipShipsGame> shipsUserOne;
-//    @ManyToOne
-//    private List<ShipShipsGame> shipsUserTwo;
-//
-//    @OneToOne
-//    private GameHistoryShips gameHistoryShips;
+    @ManyToMany
+    private List<ShipShipsGame> shipsUserOne;
+    @ManyToMany
+    private List<ShipShipsGame> shipsUserTwo;
+
+    @OneToOne
+    private GameHistoryShips gameHistoryShips;
 }

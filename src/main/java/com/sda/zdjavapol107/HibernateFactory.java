@@ -19,9 +19,9 @@ public class HibernateFactory {
 
         configuration.addAnnotatedClass(UserShipsGame.class);
         configuration.addAnnotatedClass(BoardShipsGame.class);
-//        configuration.addAnnotatedClass(ShipShipsGame.class);
+        configuration.addAnnotatedClass(ShipShipsGame.class);
         configuration.addAnnotatedClass(PointShipsGame.class);
-//        configuration.addAnnotatedClass(GameHistoryShips.class);
+        configuration.addAnnotatedClass(GameHistoryShips.class);
 
         return configuration;
     }
