@@ -31,10 +31,10 @@ public class PointShipsGame {
     @ManyToOne
     private GameHistoryShips gameHistoryShips;
 
-
-
     public PointShipsGame(String x, int y) {
         this.x = x;
         this.y = y;
+
     }
+
 }
