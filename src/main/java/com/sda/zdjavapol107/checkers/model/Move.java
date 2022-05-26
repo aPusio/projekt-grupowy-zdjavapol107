@@ -1,8 +1,15 @@
-package com.sda.zdjavapol107.checkers;
+package com.sda.zdjavapol107.checkers.model;
 
+import com.sda.zdjavapol107.checkers.Player;
+import com.sda.zdjavapol107.checkers.model.GamePeace;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@Getter
 @Entity
+
 public class Move {
 
     @Id

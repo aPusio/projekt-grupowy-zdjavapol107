@@ -1,7 +1,6 @@
 package com.sda.zdjavapol107;
 
 import com.sda.zdjavapol107.checkers.model.Game;
-import com.sda.zdjavapol107.checkers.model.GamePeaces;
 import com.sda.zdjavapol107.checkers.model.Player;
 import com.sda.zdjavapol107.checkers.model.Tournament;
 import org.hibernate.SessionFactory;
