@@ -1,5 +1,9 @@
 package com.sda.zdjavapol107;
 
+import com.sda.zdjavapol107.checkers.model.Game;
+import com.sda.zdjavapol107.checkers.model.GamePeaces;
+import com.sda.zdjavapol107.checkers.model.Player;
+import com.sda.zdjavapol107.checkers.model.Tournament;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -15,6 +19,11 @@ public class HibernateFactory {
 		configuration.setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbc.JDBCDriver");
 		configuration.setProperty("hibernate.hbm2ddl.auto", "update");
 //		configuration.setProperty("hibernate.show_sql", "true");
+
+		configuration.addAnnotatedClass(Game.class);
+		configuration.addAnnotatedClass(GamePeaces.class);
+		configuration.addAnnotatedClass(Player.class);
+		configuration.addAnnotatedClass(Tournament.class);
 
 		return configuration;
 	}

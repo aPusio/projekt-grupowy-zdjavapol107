@@ -1,9 +1,8 @@
 package com.sda.zdjavapol107.checkers;
 
 import com.sda.zdjavapol107.HibernateFactory;
-import com.sda.zdjavapol107.checkers.dao.EntityDao;
 import com.sda.zdjavapol107.checkers.dao.PlayerDao;
-import com.sda.zdjavapol107.checkers.model.PlayerEntity;
+import com.sda.zdjavapol107.checkers.model.Player;
 import org.hibernate.SessionFactory;
 
 import java.util.Scanner;
@@ -23,8 +22,8 @@ public class Checkers {
         System.out.println("Player two, please enter your name");
         playerTwoName = scanner.nextLine();
 
-        PlayerEntity playerOne = new PlayerEntity(playerOneName);
-        PlayerEntity playerTwo = new PlayerEntity(playerTwoName);
+        Player playerOne = new Player(playerOneName);
+        Player playerTwo = new Player(playerTwoName);
         playerDao.save(playerOne);
         playerDao.save(playerTwo);
 

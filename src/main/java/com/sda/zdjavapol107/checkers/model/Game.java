@@ -1,21 +1,20 @@
 package com.sda.zdjavapol107.checkers.model;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @NoArgsConstructor
-public class PlayerEntity {
+@Table(name = "games")
+public class Game {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
-    private String name;
-
-    public PlayerEntity(String name) {
-        this.name = name;
-    }
+    private Integer id;
+    @ManyToOne
+    private Set<Player> players;
 }
