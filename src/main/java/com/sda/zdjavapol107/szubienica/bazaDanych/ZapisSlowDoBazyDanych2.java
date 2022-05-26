@@ -5,10 +5,10 @@ import lombok.SneakyThrows;
 import java.io.File;
 import java.util.*;
 
-public class ZapisSlowDoBazyDanych {
+public class ZapisSlowDoBazyDanych2 {
 
     @SneakyThrows
-    public static void main(String[]args){
+    public static void main(String[] args) {
 
 
         Scanner scanner = new Scanner(new File("C:/bazaDanych.txt"));
@@ -18,7 +18,7 @@ public class ZapisSlowDoBazyDanych {
         List<String> words = new ArrayList<>();
 
 
-        while (scanner.hasNext()){
+        while (scanner.hasNext()) {
             words.add(scanner.nextLine().toUpperCase(Locale.ROOT));
         }
         String name = words.get(random.nextInt(words.size()));
@@ -26,19 +26,35 @@ public class ZapisSlowDoBazyDanych {
 
         List<Character> playerGuesses = new ArrayList<>();
 
-        while (true){
-            printWordState(name, playerGuesses);
-            getPlayerGuess(keyboard, name, playerGuesses);
-            if (printWordState(name, playerGuesses)){
-                System.out.println("YOU WIN!!!");
-                break;
-            }
-            System.out.println("Podaj całe hasło:");
-            if (keyboard.nextLine().toUpperCase(Locale.ROOT).equals(name)){
-                System.out.println("YOU WIN!!!");
-                break;
-            } else {
-                System.out.println("Pudło! Spróbuj jeszcze raz!");
+        while (true) {
+            System.out.println("1. Podaj litere :");
+            System.out.println("2. Podaj haslo  :");
+            String type = keyboard.nextLine();
+
+            switch (type) {
+
+                case "1" : {
+                    getPlayerGuess(keyboard,name,playerGuesses);
+                    if (printWordState(name,playerGuesses)) {
+                        System.out.println("Brawo !");
+                        break;
+                    };
+                    break;
+
+                }
+
+                case "2" : {
+                    System.out.println("podaj haslo");
+                    String next = keyboard.nextLine();
+                    if (next.toUpperCase(Locale.ROOT).equals(name)) {
+                        System.out.println("Brawo, odgadles cale haslo");
+                        break;
+                    }
+                }
+                default: {
+                    System.out.println("Błąd, sprobuj jeszcze raz");
+                    break;
+                }
             }
         }
     }
@@ -55,7 +71,7 @@ public class ZapisSlowDoBazyDanych {
         int correctCount = 0;
         for (int i = 0; i < name.length(); i++) {
 
-            if (playerGuesses.contains(name.charAt(i))){
+            if (playerGuesses.contains(name.charAt(i))) {
                 System.out.print(name.charAt(i));
                 correctCount++;
             } else {
