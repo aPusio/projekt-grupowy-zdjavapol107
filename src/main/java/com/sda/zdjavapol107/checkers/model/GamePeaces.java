@@ -1,7 +1,8 @@
 package com.sda.zdjavapol107.checkers.model;
 
-import com.sda.zdjavapol107.checkers.Player;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,10 +12,10 @@ import lombok.NoArgsConstructor;
 public class GamePeaces {
     @Id
     private Long id;
-    @OneToMany(mappedBy = "player")
+//    @OneToMany(mappedBy = "player")
 //  @JoinColumn(name = "id")
     @Column(name = "player_id")
-    private Player playerId;
+    private Long playerId;
     private Character color;
     private boolean type;
     private boolean status;

@@ -1,8 +1,6 @@
 package com.sda.zdjavapol107;
 
-import com.sda.zdjavapol107.checkers.model.Game;
-import com.sda.zdjavapol107.checkers.model.Player;
-import com.sda.zdjavapol107.checkers.model.Tournament;
+import com.sda.zdjavapol107.checkers.model.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -21,6 +19,7 @@ public class HibernateFactory {
 
 		configuration.addAnnotatedClass(Game.class);
 		configuration.addAnnotatedClass(GamePeaces.class);
+		configuration.addAnnotatedClass(Move.class);
 		configuration.addAnnotatedClass(Player.class);
 		configuration.addAnnotatedClass(Tournament.class);
 
