@@ -4,12 +4,11 @@ import com.sda.zdjavapol107.checkers.Player;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.extern.java.Log;
-import org.hibernate.annotations.JavaType;
+
 @Getter
 @NoArgsConstructor
 @Entity
-public class GamePeace {
+public class GamePeaces {
     @Id
     private Long id;
     @OneToMany(mappedBy = "player")
