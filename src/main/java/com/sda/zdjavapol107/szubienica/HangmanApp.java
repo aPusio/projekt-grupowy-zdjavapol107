@@ -2,7 +2,7 @@ package com.sda.zdjavapol107.szubienica;
 
 import java.util.Scanner;
 
-public class AppSzubienica {
+public class HangmanApp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
