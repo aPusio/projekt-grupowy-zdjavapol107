@@ -33,22 +33,30 @@ public class AppSzubienica {
             next = scanner.next();
 
             switch (next) {
-                case "1" -> {
+                case "1" : {
                     System.out.println("nowa gra");
+                    break;
                 }
-                case "2" -> {
+                case "2" : {
                     System.out.println("wczytaj gre");
+                    break;
                 }
-                case "3" -> {
+                case "3" : {
                     System.out.println("ranking graczy");
+                    break;
                 }
-                case "4" -> {
+                case "4" : {
                     exit = true;
+                    break;
                 }
-                default -> {
+                default : {
                     System.out.println("Wybierz ponownie.");
+                    break;
                 }
             }
         }
+
+
+
     }
 }
