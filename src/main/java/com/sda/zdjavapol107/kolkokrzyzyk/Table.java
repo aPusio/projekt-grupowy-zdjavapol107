@@ -12,7 +12,7 @@ public class Table {
         displayBoard(board);
     }
 
-    private static void displayBoard(char[][] board) {
+    static void displayBoard(char[][] board) {
         int dimensions = board.length;
         System.out.print("\t");
         for (int i = 0; i < dimensions; i++) {
