@@ -11,6 +11,8 @@ public class App {
         System.out.println("HELLO!");
         System.out.println("1. JAKAS GRA");
         System.out.println("2. JAKAS GRA");
+        System.out.println("3. STATKI");
+        System.out.println("4. JAKAS GRA");
         System.out.println("3. JAKAS GRA");
         System.out.println("4. SZUBIENICA");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");

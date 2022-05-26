@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import java.util.Optional;
 
 @AllArgsConstructor
-public abstract class EntityDao <T>{
+public abstract class HangmanEntityDao<T>{
 
     protected SessionFactory sessionFactory;
     private Class<T> clazz;
