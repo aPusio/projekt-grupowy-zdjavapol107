@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -14,8 +16,12 @@ public class Player {
     private Long id;
     @Column(nullable = false)
     private String name;
-//    @OneToMany(mappedBy = "players")
-//    private Set<Game> games;
+    @ManyToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    private Set<Game> games;
+    @OneToMany(mappedBy = "player")
+    private Set<GamePeaces> gamePeaces;
+    @OneToMany(mappedBy = "player")
+    private Set<Move> moves;
 
     public Player(String name) {
         this.name = name;

@@ -1,10 +1,10 @@
 package com.sda.zdjavapol107.checkers.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Getter
 @NoArgsConstructor
@@ -12,10 +12,8 @@ import lombok.NoArgsConstructor;
 public class GamePeaces {
     @Id
     private Long id;
-//    @OneToMany(mappedBy = "player")
-//  @JoinColumn(name = "id")
-    @Column(name = "player_id")
-    private Long playerId;
+    @ManyToOne
+    private Player player;
     private Character color;
     private boolean type;
     private boolean status;
@@ -23,7 +21,10 @@ public class GamePeaces {
     private Integer positionXAxis;
     @Column (name = "position_y_axis")
     private Integer positionYAxis;
-
+    @OneToMany(mappedBy = "gamePeace")
+    private Set<Move> moves;
+    @ManyToOne
+    private Game game;
 
 
 }

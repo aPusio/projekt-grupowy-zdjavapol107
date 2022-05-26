@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -13,6 +15,13 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @ManyToOne
-//    private Set<Player> players;
+    @ManyToMany
+    private Set<Player> player;
+    @ManyToOne
+    private Tournament tournament;
+    @OneToMany (mappedBy = "game")
+    private Set<Move> moves;
+    @OneToMany (mappedBy = "game")
+    private Set<GamePeaces> gamePeaces;
+
 }

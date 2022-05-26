@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -16,6 +18,8 @@ public class Tournament {
     @Column(name = "player_id")
     private Integer playerId;
     private Integer score;
+    @OneToMany(mappedBy = "tournament")
+    private Set<Game> games;
 }
 
 
