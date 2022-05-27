@@ -19,7 +19,7 @@ public class GamePeaces {
     private boolean status;
     @Column(name = "position_x_axis")
     private Integer positionXAxis;
-    @Column (name = "position_y_axis")
+    @Column(name = "position_y_axis")
     private Integer positionYAxis;
     @OneToMany(mappedBy = "gamePeace")
     private Set<Move> moves;

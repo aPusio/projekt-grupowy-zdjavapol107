@@ -21,7 +21,7 @@ public class App {
         int gameNumber = scanner.nextInt();
         boolean exit = false;
 
-        for (int i = 0;  exit!=true; i++) {
+        for (int i = 0; exit != true; i++) {
             switch (gameNumber) {
                 case 1:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");

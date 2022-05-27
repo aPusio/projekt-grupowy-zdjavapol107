@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import java.util.Scanner;
 
 public class Checkers {
-    public void startGame(){
+    public void startGame() {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
         PlayerDao playerDao = new PlayerDao(sessionFactory);
 
@@ -28,13 +28,7 @@ public class Checkers {
         playerDao.save(playerTwo);
 
 
-
-
-
-
-
     }
-
 
 
 }

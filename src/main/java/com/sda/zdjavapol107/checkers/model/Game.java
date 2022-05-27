@@ -19,9 +19,9 @@ public class Game {
     private Set<Player> player;
     @ManyToOne
     private Tournament tournament;
-    @OneToMany (mappedBy = "game")
+    @OneToMany(mappedBy = "game")
     private Set<Move> moves;
-    @OneToMany (mappedBy = "game")
+    @OneToMany(mappedBy = "game")
     private Set<GamePeaces> gamePeaces;
 
 }

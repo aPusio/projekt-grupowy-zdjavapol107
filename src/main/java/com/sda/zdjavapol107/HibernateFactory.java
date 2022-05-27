@@ -18,12 +18,11 @@ public class HibernateFactory {
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
 //		configuration.setProperty("hibernate.show_sql", "true");
 
-		configuration.addAnnotatedClass(Game.class);
-		configuration.addAnnotatedClass(GamePeaces.class);
-		configuration.addAnnotatedClass(Move.class);
-		configuration.addAnnotatedClass(Player.class);
-		configuration.addAnnotatedClass(Tournament.class);
-
+        configuration.addAnnotatedClass(Game.class);
+        configuration.addAnnotatedClass(GamePeaces.class);
+        configuration.addAnnotatedClass(Move.class);
+        configuration.addAnnotatedClass(Player.class);
+        configuration.addAnnotatedClass(Tournament.class);
 
 
         configuration.addAnnotatedClass(UserShipsGame.class);
