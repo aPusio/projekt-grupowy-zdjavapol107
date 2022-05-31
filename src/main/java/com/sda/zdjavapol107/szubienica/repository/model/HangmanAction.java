@@ -1,4 +1,4 @@
-package com.sda.zdjavapol107.szubienica.model;
+package com.sda.zdjavapol107.szubienica.repository.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

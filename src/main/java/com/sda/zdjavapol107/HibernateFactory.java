@@ -1,6 +1,9 @@
 package com.sda.zdjavapol107;
 
 import com.sda.zdjavapol107.statki.model.*;
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanGame;
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanSlogan;
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanUser;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -15,10 +18,14 @@ public class HibernateFactory {
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbc.JDBCDriver");
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
-//		configuration.setProperty("hibernate.show_sql", "true");
+		configuration.setProperty("hibernate.show_sql", "true");
 
-        configuration.addAnnotatedClass(UserShipsGame.class);
-        configuration.addAnnotatedClass(BoardShipsGame.class);
+        configuration.addAnnotatedClass(HangmanSlogan.class);
+        configuration.addAnnotatedClass(HangmanUser.class);
+        configuration.addAnnotatedClass(HangmanGame.class);
+
+ //       configuration.addAnnotatedClass(UserShipsGame.class);
+   //     configuration.addAnnotatedClass(BoardShipsGame.class);
 //        configuration.addAnnotatedClass(ShipShipsGame.class);
 //        configuration.addAnnotatedClass(PointShipsGame.class);
 //        configuration.addAnnotatedClass(GameHistoryShips.class);
