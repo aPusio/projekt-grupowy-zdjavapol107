@@ -1,6 +1,12 @@
 package com.sda.zdjavapol107.szubienica.bazaDanych;
 
+import com.sda.zdjavapol107.HibernateFactory;
+import com.sda.zdjavapol107.szubienica.repository.dao.HangmanSloganDao;
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanSlogan;
 import lombok.SneakyThrows;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.io.File;
 import java.util.*;
@@ -10,6 +16,12 @@ public class ZapisSlowDoBazyDanych2 {
     @SneakyThrows
     public static void main(String[] args) {
 
+        HibernateFactory hibernateFactory = new HibernateFactory();
+        SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
+
+
+        HangmanSloganDao hangmanSloganDao = new HangmanSloganDao(sessionFactory);
+
 
         Scanner scanner = new Scanner(new File("C:/bazaDanych.txt"));
         Scanner keyboard = new Scanner(System.in);
@@ -18,17 +30,26 @@ public class ZapisSlowDoBazyDanych2 {
         List<String> words = new ArrayList<>();
 
 
+
         while (scanner.hasNext()) {
             words.add(scanner.nextLine().toUpperCase(Locale.ROOT));
         }
+
         String name = words.get(random.nextInt(words.size()));
         System.out.println(name);
 
         List<Character> playerGuesses = new ArrayList<>();
 
-        while (true) {
+        for (int i = 0; i <= words.size()-1; i++) {
+            hangmanSloganDao.save(new HangmanSlogan(words.get(i)));
+        }
+
+        boolean exit = false;
+
+        while (!exit) {
             System.out.println("1. Podaj litere :");
             System.out.println("2. Podaj haslo  :");
+            System.out.println("3. Wyjdz z gry  :");
             String type = keyboard.nextLine();
 
             switch (type) {
@@ -48,9 +69,16 @@ public class ZapisSlowDoBazyDanych2 {
                     String next = keyboard.nextLine();
                     if (next.toUpperCase(Locale.ROOT).equals(name)) {
                         System.out.println("Brawo, odgadles cale haslo");
+                        exit =true;
                         break;
                     }
                 }
+
+                case "3" : {
+                    exit = true;
+                    break;
+                }
+
                 default: {
                     System.out.println("Błąd, sprobuj jeszcze raz");
                     break;
