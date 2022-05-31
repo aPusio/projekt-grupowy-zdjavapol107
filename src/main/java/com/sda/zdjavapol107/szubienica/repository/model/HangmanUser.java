@@ -1,4 +1,4 @@
-package com.sda.zdjavapol107.szubienica.model;
+package com.sda.zdjavapol107.szubienica.repository.model;
 
 
 import jakarta.persistence.*;
@@ -10,13 +10,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "SZ_User")
 public class HangmanUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @OneToOne(mappedBy = "gameUser")
+    private HangmanGame game;
 //    private Long classification;
 
 
