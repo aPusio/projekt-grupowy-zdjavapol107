@@ -1,24 +1,23 @@
 package com.sda.zdjavapol107.statki.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class PointShipsGame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pointId;
-    private String x;
+    private int x; //String
     private int y;
-    @OneToMany(mappedBy = "localization")
-    private ShipShipsGame shipShipsGame;
+
+    @OneToOne
+    private ShipShipsGame shipSinglePoint;
 
     @OneToMany(mappedBy = "playBoardUserOne")
     private BoardShipsGame boardUserOne;
@@ -28,9 +27,7 @@ public class PointShipsGame {
     @OneToMany(mappedBy = "shootsHistory")
     private GameHistoryShips gameHistoryShips;
 
-
-
-    public PointShipsGame(String x, int y) {
+    public PointShipsGame(int x, int y) {
         this.x = x;
         this.y = y;
     }
