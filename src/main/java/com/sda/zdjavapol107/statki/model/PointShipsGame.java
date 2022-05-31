@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -17,21 +19,22 @@ public class PointShipsGame {
     private int pointId;
     private String x;
     private int y;
-    @OneToMany(mappedBy = "localization")
-    private ShipShipsGame shipShipsGame;
 
-    @OneToMany(mappedBy = "playBoardUserOne")
+    @ManyToOne
     private BoardShipsGame boardUserOne;
-    @OneToMany(mappedBy = "playBoardUserTwo")
+    @ManyToOne
     private BoardShipsGame boardUserTwo;
 
-    @OneToMany(mappedBy = "shootsHistory")
+    @OneToMany(mappedBy = "localization")
+    private List<ShipShipsGame> shipShipsGame;
+
+    @ManyToOne
     private GameHistoryShips gameHistoryShips;
-
-
 
     public PointShipsGame(String x, int y) {
         this.x = x;
         this.y = y;
+
     }
+
 }
