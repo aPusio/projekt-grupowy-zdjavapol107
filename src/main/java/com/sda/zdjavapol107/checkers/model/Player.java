@@ -22,6 +22,8 @@ public class Player {
     private Set<GamePeaces> gamePeaces;
     @OneToMany(mappedBy = "player")
     private Set<Move> moves;
+    @ManyToOne
+    private Tournament tournament;
 
     public Player(String name) {
         this.name = name;
