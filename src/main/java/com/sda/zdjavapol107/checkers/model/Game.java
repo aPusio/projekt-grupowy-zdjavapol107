@@ -24,4 +24,10 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private Set<GamePeaces> gamePeaces;
 
+    public Game(Set<Player> player, Tournament tournament, Set<Move> moves, Set<GamePeaces> gamePeaces) {
+        this.player = player;
+        this.tournament = tournament;
+        this.moves = moves;
+        this.gamePeaces = gamePeaces;
+    }
 }

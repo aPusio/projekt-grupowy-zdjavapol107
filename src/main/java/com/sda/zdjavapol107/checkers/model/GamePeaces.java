@@ -11,6 +11,7 @@ import java.util.Set;
 @Entity
 public class GamePeaces {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Player player;
