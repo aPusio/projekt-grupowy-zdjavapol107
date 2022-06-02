@@ -19,14 +19,10 @@ public class CheckersBoard {
     }
 
     private void printBoard(Pawn[][] checkersBoard) {
-        for (Pawn[] pawns : this.checkersBoard) {
-            System.out.println(Arrays.deepToString(pawns).replaceAll("null", "_"));
-            System.out.printf("%c %s", );
-        }
-
         for (int i = 0; i < 8; i++) {
-            System.out.printf("%c %s", Character.forDigit());
+            System.out.printf("%c %s\n", (char) 65 + i, Arrays.deepToString(checkersBoard[i]).replaceAll("null", "_"));
         }
+        System.out.println("   1  2  3  4  5  6  7  8");
     }
 
     private Pawn[][] generateNewBoard(){
