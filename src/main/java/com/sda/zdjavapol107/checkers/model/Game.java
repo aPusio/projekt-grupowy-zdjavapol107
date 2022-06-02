@@ -3,11 +3,13 @@ package com.sda.zdjavapol107.checkers.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "games")
 public class Game {
@@ -24,10 +26,9 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private Set<GamePeaces> gamePeaces;
 
-    public Game(Set<Player> player, Tournament tournament, Set<Move> moves, Set<GamePeaces> gamePeaces) {
+    public Game(Set<Player> player, Tournament tournament) {
         this.player = player;
         this.tournament = tournament;
-        this.moves = moves;
-        this.gamePeaces = gamePeaces;
     }
+
 }

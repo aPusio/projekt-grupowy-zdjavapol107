@@ -3,10 +3,12 @@ package com.sda.zdjavapol107.checkers.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class GamePeaces {
@@ -16,8 +18,8 @@ public class GamePeaces {
     @ManyToOne
     private Player player;
     private Character color;
-    private boolean type;
-    private boolean status;
+    private boolean isDame;
+    private boolean inGame;
     @Column(name = "position_x_axis")
     private Integer positionXAxis;
     @Column(name = "position_y_axis")
@@ -27,5 +29,11 @@ public class GamePeaces {
     @ManyToOne
     private Game game;
 
-
+    public GamePeaces(Player player, Character color, boolean isDame, boolean inGame, Game game) {
+        this.player = player;
+        this.color = color;
+        this.isDame = isDame;
+        this.inGame = inGame;
+        this.game = game;
+    }
 }

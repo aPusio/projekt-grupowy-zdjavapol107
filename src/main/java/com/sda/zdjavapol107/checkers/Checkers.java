@@ -2,8 +2,12 @@ package com.sda.zdjavapol107.checkers;
 
 import com.sda.zdjavapol107.HibernateFactory;
 import com.sda.zdjavapol107.checkers.dao.*;
-import com.sda.zdjavapol107.checkers.model.Player;
+import com.sda.zdjavapol107.checkers.model.*;
 import org.hibernate.SessionFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Checkers {
     public static void startGame() {
@@ -32,27 +36,28 @@ public class Checkers {
 //        4. GamePeaces
 //        5. Move
 
-        Player playerOne = new Player(playerOneName);
-        Player playerTwo = new Player(playerTwoName);
-
-//        Tournament tournament = new Tournament()
-
-//        Game game = new Game(Set.of(playerOne, playerTwo), ));
-
-
-
-
-
-
-
+        Tournament tournament = new Tournament(0, 0);
+        Player playerOne = new Player(playerOneName, tournament);
+        Player playerTwo = new Player(playerTwoName, tournament);
+        Game game = new Game(Set.of(playerOne, playerTwo), tournament);
+        Map<Integer, GamePeaces> gamePeacesMap = new HashMap<>();
+        for (int i = 0; i < 24; i++) {
+            if (i < 12) {
+                gamePeacesMap.put(i, new GamePeaces(playerOne, 'w', false, true, game));
+            }
+            gamePeacesMap.put(i, new GamePeaces(playerTwo, 'b', false, true, game));
+        }
 
 
-
-
-
+        tournamentDao.save(tournament);
         playerDao.save(playerOne);
         playerDao.save(playerTwo);
-
+        gameDao.save(game);
+        for (int i = 0; i < 24; i++) {
+            gamePeacesDao.save(gamePeacesMap.get(i));
+        }
+        moveDao.save(new Move(playerOne, gamePeacesMap.get(1), 0, 0, game));
+        moveDao.save(new Move(playerOne, gamePeacesMap.get(2), 0, 0, game));
 
 
     }

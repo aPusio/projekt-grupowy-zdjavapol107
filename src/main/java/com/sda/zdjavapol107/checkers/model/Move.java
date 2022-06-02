@@ -23,4 +23,12 @@ public class Move {
     private Integer newPositionYAxis;
     @ManyToOne
     private Game game;
+
+    public Move(Player player, GamePeaces gamePeace, Integer newPositionXAxis, Integer newPositionYAxis, Game game) {
+        this.player = player;
+        this.gamePeace = gamePeace;
+        this.newPositionXAxis = newPositionXAxis;
+        this.newPositionYAxis = newPositionYAxis;
+        this.game = game;
+    }
 }

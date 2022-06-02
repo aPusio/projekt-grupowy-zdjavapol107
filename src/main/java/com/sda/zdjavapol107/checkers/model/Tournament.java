@@ -4,11 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "tournament")
 public class Tournament {
@@ -23,7 +25,10 @@ public class Tournament {
     @OneToMany(mappedBy = "tournament")
     private Set<Game> games;
 
-
+    public Tournament(Integer playerOneScore, Integer playerTwoScore) {
+        this.playerOneScore = playerOneScore;
+        this.playerTwoScore = playerTwoScore;
+    }
 }
 
 
