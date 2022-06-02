@@ -8,8 +8,4 @@ import lombok.Getter;
 public class CheckersPlayer {
     private String playerName;
     private char color;
-
-
-
-
 }

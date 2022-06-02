@@ -5,7 +5,7 @@ import com.sda.zdjavapol107.checkers.dao.*;
 import org.hibernate.SessionFactory;
 
 public class Checkers {
-    public static void startGame() {
+    public static void gameSetup() {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
         PlayerDao playerDao = new PlayerDao(sessionFactory);
         GameDao gameDao = new GameDao(sessionFactory);
@@ -17,14 +17,18 @@ public class Checkers {
         String playerOneName, playerTwoName;
 
         System.out.println("Welcome to Checkers!\n");
-        System.out.println("Player one, please enter your name");
+//        System.out.println("Player one, please enter your name");
 //        playerOneName = scanner.nextLine();
         playerOneName = "Gracz nr 1";
-        System.out.println("Player two, please enter your name");
+//        System.out.println("Player two, please enter your name");
 //        playerTwoName = scanner.nextLine();
         playerTwoName = "Gracz nr 2";
 
-        CheckersBoard checkersBoard = new CheckersBoard(playerOneName, playerTwoName);
+        CheckersPlayer playerOne = new CheckersPlayer(playerOneName, 'w');
+        CheckersPlayer playerTwo = new CheckersPlayer(playerTwoName, 'b');
+
+
+        CheckersBoard checkersBoard = new CheckersBoard(playerOne, playerTwo);
 
 //        Kolejność zapisu
 //        1. Tournament

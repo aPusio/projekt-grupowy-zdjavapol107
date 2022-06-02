@@ -3,11 +3,13 @@ package com.sda.zdjavapol107.checkers.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "players")
 public class Player {

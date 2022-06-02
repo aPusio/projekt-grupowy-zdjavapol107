@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Queue;
+
 @AllArgsConstructor
 @Getter
 public class Pawn {
-//    private int pawnNumber;
+    //    private int pawnNumber;
     private Character color;
     private boolean isDame;
     private boolean inGame;
