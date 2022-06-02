@@ -44,10 +44,10 @@ public class Checkers {
         for (int i = 0; i < 24; i++) {
             if (i < 12) {
                 gamePeacesMap.put(i, new GamePeaces(playerOne, 'w', false, true, game));
+            } else {
+                gamePeacesMap.put(i, new GamePeaces(playerTwo, 'b', false, true, game));
             }
-            gamePeacesMap.put(i, new GamePeaces(playerTwo, 'b', false, true, game));
         }
-
 
         tournamentDao.save(tournament);
         playerDao.save(playerOne);
@@ -56,8 +56,8 @@ public class Checkers {
         for (int i = 0; i < 24; i++) {
             gamePeacesDao.save(gamePeacesMap.get(i));
         }
+        moveDao.save(new Move(playerOne, gamePeacesMap.get(0), 0, 0, game));
         moveDao.save(new Move(playerOne, gamePeacesMap.get(1), 0, 0, game));
-        moveDao.save(new Move(playerOne, gamePeacesMap.get(2), 0, 0, game));
 
 
     }

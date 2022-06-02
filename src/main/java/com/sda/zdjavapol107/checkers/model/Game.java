@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -25,6 +26,7 @@ public class Game {
     private Set<Move> moves;
     @OneToMany(mappedBy = "game")
     private Set<GamePeaces> gamePeaces;
+    private LocalDateTime saveDateAndTime;
 
     public Game(Set<Player> player, Tournament tournament) {
         this.player = player;
