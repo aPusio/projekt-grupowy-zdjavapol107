@@ -60,7 +60,7 @@ public class CheckersSave {
     private Set<Move> createSetOfMoves (Map<Integer, Pawn> pawnMap, Player playerOne, Player PlayerTwo, Game game) {
         Set<Move> moveSet = new HashSet<>();
         for (int i = 0; i < 24; i++) {
-//            for (int j = 0; j < ; j++) {
+//            for (int j = 0; j < pawnMap.; j++) {
 //
 //            }
 

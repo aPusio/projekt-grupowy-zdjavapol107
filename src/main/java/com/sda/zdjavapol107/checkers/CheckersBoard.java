@@ -22,6 +22,7 @@ public class CheckersBoard {
         this.playerTwo = playerTwo;
         checkersBoard = generateNewBoard();
         checkersTournament = new CheckersTournament();
+        printBoard();
     }
 
     private void printBoard() {
