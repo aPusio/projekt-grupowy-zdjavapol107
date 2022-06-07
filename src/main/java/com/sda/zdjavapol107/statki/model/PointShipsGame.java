@@ -1,40 +1,33 @@
 package com.sda.zdjavapol107.statki.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.util.List;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class PointShipsGame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pointId;
-    private String x;
+    private int x; //String
     private int y;
+    @OneToMany(mappedBy = "localization")
+    private ShipShipsGame shipShipsGame;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "playBoardUserOne")
     private BoardShipsGame boardUserOne;
-    @ManyToOne
+    @OneToMany(mappedBy = "playBoardUserTwo")
     private BoardShipsGame boardUserTwo;
 
-    @OneToMany(mappedBy = "localization")
-    private List<ShipShipsGame> shipShipsGame;
-
-    @ManyToOne
+    @OneToMany(mappedBy = "shootsHistory")
     private GameHistoryShips gameHistoryShips;
 
-    public PointShipsGame(String x, int y) {
+    public PointShipsGame(int x, int y) {
         this.x = x;
         this.y = y;
-
     }
-
 }
