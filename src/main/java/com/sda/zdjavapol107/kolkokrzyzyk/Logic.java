@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Logic {
 
-    private static void start() {
+    public static void start() {
         char[][] board = new char[3][3];
         int movesCount = 0;
         char activePlayerSymbol = 'X';
