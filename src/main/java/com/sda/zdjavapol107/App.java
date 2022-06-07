@@ -33,7 +33,8 @@ public class App {
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 case 3:
-                    ShipsMain.start();
+                    ShipsMain shipsMain = new ShipsMain();
+                    shipsMain.start();
                     break;
                 case 4:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
