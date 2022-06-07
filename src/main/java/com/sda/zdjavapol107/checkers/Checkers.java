@@ -1,17 +1,13 @@
 package com.sda.zdjavapol107.checkers;
 
-import com.sda.zdjavapol107.HibernateFactory;
-import com.sda.zdjavapol107.checkers.dao.*;
-import org.hibernate.SessionFactory;
-
 public class Checkers {
     public static void gameSetup() {
-        SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
-        PlayerDao playerDao = new PlayerDao(sessionFactory);
-        GameDao gameDao = new GameDao(sessionFactory);
-        GamePeacesDao gamePeacesDao = new GamePeacesDao(sessionFactory);
-        MoveDao moveDao = new MoveDao(sessionFactory);
-        TournamentDao tournamentDao = new TournamentDao(sessionFactory);
+//        SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
+//        PlayerDao playerDao = new PlayerDao(sessionFactory);
+//        GameDao gameDao = new GameDao(sessionFactory);
+//        GamePeacesDao gamePeacesDao = new GamePeacesDao(sessionFactory);
+//        MoveDao moveDao = new MoveDao(sessionFactory);
+//        TournamentDao tournamentDao = new TournamentDao(sessionFactory);
 
 //        Scanner scanner = new Scanner(System.in);
         String playerOneName, playerTwoName;
@@ -29,6 +25,9 @@ public class Checkers {
 
 
         CheckersBoard checkersBoard = new CheckersBoard(playerOne, playerTwo);
+
+        CheckersSave checkersSave = new CheckersSave();
+        checkersSave.saveGame(checkersBoard);
 
 //        Kolejność zapisu
 //        1. Tournament

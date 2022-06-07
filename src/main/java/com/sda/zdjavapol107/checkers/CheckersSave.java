@@ -1,22 +1,16 @@
 package com.sda.zdjavapol107.checkers;
 
+import com.sda.zdjavapol107.HibernateFactory;
+import com.sda.zdjavapol107.checkers.dao.*;
 import com.sda.zdjavapol107.checkers.model.*;
+import org.hibernate.SessionFactory;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CheckersSave {
 
-    private CheckersBoard checkersBoard;
-
-    public CheckersSave(CheckersBoard checkersBoard) {
-        this.checkersBoard = checkersBoard;
-    }
-
-    public void saveGame() {
+    public void saveGame(CheckersBoard checkersBoard) {
         Tournament tournament = convertTournamentToEntity(checkersBoard.getCheckersTournament());
         Player playerOne = convertPlayerToEntity(checkersBoard.getPlayerOne());
         Player playerTwo = convertPlayerToEntity(checkersBoard.getPlayerTwo());
@@ -24,9 +18,14 @@ public class CheckersSave {
         playerTwo.setTournament(tournament);
         Game game = createGameEntity(playerOne, playerTwo, tournament);
         Map<Integer, GamePeaces> gamePeacesMap = createGamePeacesMap(checkersBoard, game, playerOne, playerTwo);
-        Set<Move> setOfMoves = createSetOfMoves(checkersBoard.getPawnMap(), playerOne, playerTwo, game);
+        Set<Move> setOfMoves = createSetOfMoves(checkersBoard, gamePeacesMap, playerOne, playerTwo, game);
 
-
+        SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
+        PlayerDao playerDao = new PlayerDao(sessionFactory);
+        GameDao gameDao = new GameDao(sessionFactory);
+        GamePeacesDao gamePeacesDao = new GamePeacesDao(sessionFactory);
+        MoveDao moveDao = new MoveDao(sessionFactory);
+        TournamentDao tournamentDao = new TournamentDao(sessionFactory);
 
     }
 
@@ -44,27 +43,34 @@ public class CheckersSave {
         return game;
     }
 
-    private Map<Integer, GamePeaces> createGamePeacesMap (CheckersBoard checkersBoard, Game game, Player playerOne, Player playerTwo) {
+    private Map<Integer, GamePeaces> createGamePeacesMap(CheckersBoard checkersBoard, Game game, Player playerOne, Player playerTwo) {
         Map<Integer, GamePeaces> gamePeacesMap = new HashMap<>();
         Map<Integer, Pawn> pawnMap = checkersBoard.getPawnMap();
         for (int i = 0; i < 24; i++) {
             if (pawnMap.get(i).getColor() == 'w') {
-                gamePeacesMap.put(i, new GamePeaces(playerOne, pawnMap.get(i).getColor(), pawnMap.get(i).isDame(), pawnMap.get(i).isInGame(), pawnMap.get(i).getCurrentPosition().getXAxis(), pawnMap.get(i).getCurrentPosition().getYAxis(), game));
+                gamePeacesMap.put(i, new GamePeaces(playerOne, pawnMap.get(i).getColor(), pawnMap.get(i).isDame(),
+                        pawnMap.get(i).isInGame(), pawnMap.get(i).getCurrentPosition().getXAxis(),
+                        pawnMap.get(i).getCurrentPosition().getYAxis(), game));
             } else if (pawnMap.get(i).getColor() == 'b') {
-                gamePeacesMap.put(i, new GamePeaces(playerTwo, pawnMap.get(i).getColor(), pawnMap.get(i).isDame(), pawnMap.get(i).isInGame(), pawnMap.get(i).getCurrentPosition().getXAxis(), pawnMap.get(i).getCurrentPosition().getYAxis(), game));
+                gamePeacesMap.put(i, new GamePeaces(playerTwo, pawnMap.get(i).getColor(), pawnMap.get(i).isDame(),
+                        pawnMap.get(i).isInGame(), pawnMap.get(i).getCurrentPosition().getXAxis(),
+                        pawnMap.get(i).getCurrentPosition().getYAxis(), game));
             }
         }
         return gamePeacesMap;
     }
 
-    private Set<Move> createSetOfMoves (Map<Integer, Pawn> pawnMap, Player playerOne, Player PlayerTwo, Game game) {
+    private Set<Move> createSetOfMoves(CheckersBoard checkersBoard, Map<Integer, GamePeaces> gamePeacesMap, Player playerOne, Player PlayerTwo, Game game) {
         Set<Move> moveSet = new HashSet<>();
+        Map<Integer, Pawn> pawnMap = checkersBoard.getPawnMap();
         for (int i = 0; i < 24; i++) {
-//            for (int j = 0; j < pawnMap.; j++) {
-//
-//            }
-
+            Queue<PawnMove> pawnMoves = pawnMap.get(i).getListOfMoves();
+            if (pawnMoves.size() != 0) {
+                for (int j = 0; j < pawnMap.get(i).getListOfMoves().size(); j++) {
+                        moveSet.add(new Move(gamePeacesMap.get(i).getPlayer(), gamePeacesMap.get(i), pawnMoves.poll(), game));
+                }
+            }
         }
-        return null;
+        return moveSet;
     }
 }

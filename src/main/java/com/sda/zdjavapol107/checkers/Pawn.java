@@ -25,7 +25,19 @@ public class Pawn {
 
     @Override
     public String toString() {
-        return color.toString();
+        if (color == 'w') {
+            if (isDame) {
+                return "W";
+            } else {
+                return "w";
+            }
+        } else {
+            if (isDame) {
+                return "B";
+            } else {
+                return "b";
+            }
+        }
     }
 
 }

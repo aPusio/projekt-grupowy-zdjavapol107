@@ -15,6 +15,7 @@ public class CheckersBoard {
     private CheckersPlayer playerOne;
     private CheckersPlayer playerTwo;
     private CheckersTournament checkersTournament;
+    private CheckersTurn turn;
 
 
     public CheckersBoard(CheckersPlayer playerOne, CheckersPlayer playerTwo) {
