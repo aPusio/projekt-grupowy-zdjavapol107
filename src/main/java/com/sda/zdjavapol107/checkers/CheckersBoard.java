@@ -49,9 +49,11 @@ public class CheckersBoard {
                 if (i != 3 && i != 4) {
                     if (i % 2 == 0 && j % 2 == 0) {
                         result[i][j] = pawnMap.get(keyValue);
+                        pawnMap.get(keyValue).setStartingPosition(i, j);
                         keyValue--;
                     } else if (i % 2 != 0 && j % 2 != 0) {
                         result[i][j] = pawnMap.get(keyValue);
+                        pawnMap.get(keyValue).setStartingPosition(i, j);
                         keyValue--;
                     }
                 }

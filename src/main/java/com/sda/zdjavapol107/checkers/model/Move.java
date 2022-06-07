@@ -31,7 +31,7 @@ public class Move {
         this.gamePeace = gamePeace;
         this.newPositionXAxis = pawnMove.getNewPosition().getXAxis();
         this.newPositionYAxis = pawnMove.getNewPosition().getYAxis();
-        this.turn = pawnMove.getTurn().getTurnNumber();
+        this.turn = pawnMove.getTurn();
         this.game = game;
     }
 }

@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 public class PawnMove {
     private PawnCoordinates oldPosition;
-    private PawnCoordinates newPosition;
-    private CheckersTurn turn;
+    private final PawnCoordinates newPosition;
+    private final long turn;
 
-    public PawnMove(PawnCoordinates newPosition, CheckersTurn turn) {
+    public PawnMove(PawnCoordinates newPosition, long turn) {
         this.newPosition = newPosition;
         this.turn = turn;
     }

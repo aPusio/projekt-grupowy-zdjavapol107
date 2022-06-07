@@ -3,6 +3,7 @@ package com.sda.zdjavapol107.checkers;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 @AllArgsConstructor
@@ -20,7 +21,14 @@ public class Pawn {
         this.color = color;
         this.isDame = isDame;
         this.inGame = inGame;
+        this.currentPosition = new PawnCoordinates();
+    }
 
+    public void setStartingPosition(int x, int y) {
+        currentPosition.setXAxis(x);
+        currentPosition.setYAxis(y);
+        listOfMoves = new LinkedList<>();
+        listOfMoves.offer(new PawnMove(currentPosition, 0L));
     }
 
     @Override
