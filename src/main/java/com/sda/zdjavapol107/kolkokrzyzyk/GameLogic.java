@@ -2,9 +2,10 @@ package com.sda.zdjavapol107.kolkokrzyzyk;
 
 import java.util.Scanner;
 
-public class Logic {
+public class GameLogic {
 
-    private static void start() {
+
+    public static void start() {
         char[][] board = new char[3][3];
         int movesCount = 0;
         char activePlayerSymbol = 'X';
@@ -12,7 +13,13 @@ public class Logic {
         boolean isWon = false;
         while (movesCount < 9 && !isWon) {
             printBoard(board);
-            boolean isMoveWasCorrect = performMove(board, activePlayerSymbol);
+            boolean isMoveWasCorrect = false;
+            try {
+                 isMoveWasCorrect = performMove(board, activePlayerSymbol);
+            }catch (ArrayIndexOutOfBoundsException exception){
+                System.out.println("Podaj właściwą liczbę");
+            }
+
             if (isMoveWasCorrect) {
                 movesCount++;
                 isWon = checkWinner(board, activePlayerSymbol);
