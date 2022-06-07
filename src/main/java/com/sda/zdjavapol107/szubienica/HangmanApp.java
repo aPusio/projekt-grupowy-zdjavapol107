@@ -7,6 +7,7 @@ import com.sda.zdjavapol107.szubienica.repository.dao.HangmanUserDao;
 import com.sda.zdjavapol107.szubienica.repository.model.HangmanGame;
 import com.sda.zdjavapol107.szubienica.repository.model.HangmanUser;
 import com.sda.zdjavapol107.szubienica.service.GameService;
+import com.sda.zdjavapol107.szubienica.service.GameStart;
 import com.sda.zdjavapol107.szubienica.service.SessionFactoryService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,11 +60,12 @@ public class HangmanApp {
                     HangmanUser user = new HangmanUser(name);
                     hangmanUserDao.save(user);
 
-                    GameService.main(args);
+                    GameStart gameStart = new GameStart();
+                    gameStart.start();
 
                     HangmanGameDao hangmanGameDao = new HangmanGameDao(SessionFactoryService.getSessionFactory());
                     hangmanGameDao.save(new HangmanGame(user,false));
-//
+
                     break;
                 }
                 case "2": {

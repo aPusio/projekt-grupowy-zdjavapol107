@@ -21,16 +21,11 @@ public class GameService {
         return hibernateFactory;
     }
 
-
     public GameService() {
     }
 
     public HangmanSloganDao getHangmanSloganDao() {
         return hangmanSloganDao;
-    }
-
-    public void setHangmanSloganDao(HangmanSloganDao hangmanSloganDao) {
-        this.hangmanSloganDao = hangmanSloganDao;
     }
 
     public String rollRandomSlogan() {
@@ -45,10 +40,9 @@ public class GameService {
 
         session.close();
         return randomSlogan.getName();
-
     }
 
-    private static boolean getPlayerGuess(Scanner keyboard, String slogan, List<Character> playerGuesses) {
+    public boolean getPlayerGuess(Scanner keyboard, String slogan, List<Character> playerGuesses) {
         System.out.println();
         System.out.println("Podaj literę:");
         String letterGuess = keyboard.nextLine().toUpperCase(Locale.ROOT);
@@ -57,8 +51,7 @@ public class GameService {
         return slogan.contains(letterGuess);
     }
 
-
-    private static boolean printWordState(String slogan, List<Character> playerGuesses) {
+    public boolean printWordState(String slogan, List<Character> playerGuesses) {
         int correctCount = 0;
         for (int i = 0; i < slogan.length(); i++) {
 
@@ -73,174 +66,5 @@ public class GameService {
         System.out.println();
         return (slogan.length() == correctCount);
     }
-
-
-    public static void main(String[] args) {
-
-        int wrongCount = 0;
-        int gamePoints = 0;
-        Scanner keyboard = new Scanner(System.in);
-        List<Character> playerGuesses = new ArrayList<>();
-        GameService gameService = new GameService();
-
-
-        String slogan = gameService.rollRandomSlogan();
-        System.out.println(slogan);
-
-
-        boolean exit = false;
-
-        while (!exit) {
-
-            if (gamePoints == 3) {
-                break;
-            }
-
-            if (wrongCount > 7) {
-                gamePoints++;
-                wrongCount = 0;
-            }
-
-            if(wrongCount == 0) {
-                System.out.println("  |-----------");
-                System.out.println("  | /");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("__|__");
-            }
-            else if(wrongCount == 1) {
-                System.out.println("  |-----------");
-                System.out.println("  | /        |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("__|__");
-            }
-            else if(wrongCount == 2) {
-                System.out.println("  |-----------");
-                System.out.println("  | /        |");
-                System.out.println("  |          |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("__|__");
-            }
-            else if(wrongCount == 3) {
-                System.out.println("  |-----------");
-                System.out.println("  | /        |");
-                System.out.println("  |          |");
-                System.out.println("  |          O");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("__|__");
-            }
-            else if(wrongCount == 4) {
-                System.out.println("  |-----------");
-                System.out.println("  | /        |");
-                System.out.println("  |          |");
-                System.out.println("  |          O");
-                System.out.println("  |         -");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("__|__");
-            }
-            else if(wrongCount == 5) {
-                System.out.println("  |-----------");
-                System.out.println("  | /        |");
-                System.out.println("  |          |");
-                System.out.println("  |          O");
-                System.out.println("  |         -|");
-                System.out.println("  |");
-                System.out.println("  |");
-                System.out.println("__|__");
-            }
-            else if (wrongCount == 6){
-                System.out.println("|----------");
-                System.out.println("|         O");
-                System.out.println("|        -|-");
-                System.out.println("|");
-                System.out.println("|");
-                System.out.println("|");
-                System.out.println("|");
-            }
-            else if(wrongCount == 7){
-                System.out.println("|----------");
-                System.out.println("|         O");
-                System.out.println("|        -|-");
-                System.out.println("|        /");
-                System.out.println("|");
-                System.out.println("|");
-                System.out.println("|");
-            }
-            else {
-                System.out.println("|----------");
-                System.out.println("|         O");
-                System.out.println("|        -|-");
-                System.out.println("|        /|");
-                System.out.println("|");
-                System.out.println("|");
-                System.out.println("|");
-            }
-
-
-            System.out.println("1. Podaj litere :");
-            System.out.println("2. Podaj haslo  :");
-            System.out.println("3. Wyjdz z gry  :");
-            String type = keyboard.nextLine();
-
-            switch (type) {
-
-                case "1": {
-                    if (!getPlayerGuess(keyboard, slogan, playerGuesses)) {
-                        wrongCount++;
-                    }
-                    if (printWordState(slogan, playerGuesses)) {
-                        System.out.println("Brawo !");
-                        slogan = gameService.rollRandomSlogan();
-                        System.out.println(slogan);
-                        gamePoints++;
-                        break;
-                    }
-                    break;
-
-                }
-
-                case "2": {
-                    System.out.println();
-                    System.out.println("podaj haslo");
-                    String next = keyboard.nextLine();
-                    if (next.toUpperCase(Locale.ROOT).equals(slogan)) {
-                        System.out.println("Brawo, odgadles cale hasło");
-                        slogan = gameService.rollRandomSlogan();
-                        System.out.println(slogan);
-                        gamePoints++;
-                    } else {
-                        wrongCount++;
-                    }
-                    break;
-                }
-
-                case "3": {
-                    exit = true;
-                    break;
-                }
-
-                default: {
-                    System.out.println("Błąd, sprobuj jeszcze raz");
-                    break;
-                }
-            }
-        }
-
-
-    }
-
-
 }
+
