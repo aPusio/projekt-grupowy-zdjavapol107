@@ -15,9 +15,8 @@ public class PointShipsGame {
     private int pointId;
     private int x; //String
     private int y;
-
-    @OneToOne
-    private ShipShipsGame shipSinglePoint;
+    @OneToMany(mappedBy = "localization")
+    private ShipShipsGame shipShipsGame;
 
     @OneToMany(mappedBy = "playBoardUserOne")
     private BoardShipsGame boardUserOne;

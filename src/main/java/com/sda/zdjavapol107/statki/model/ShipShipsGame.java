@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.awt.*;
 import java.util.List;
 
 @Entity
@@ -20,29 +19,18 @@ public class ShipShipsGame {
     private int shipId;
     private int shipSize;
     boolean shipDestroyed;
-
-    private boolean isTop;
-
-    private boolean isDown;
-    private boolean isLeft;
-
-    private boolean isRight;
-
-    @OneToOne(mappedBy = "shipSinglePoint")
-    private PointShipsGame point;
+    @ManyToOne
+    List<PointShipsGame> localization;
 
     @OneToMany(mappedBy = "shipsUserOne")
     private BoardShipsGame boardShipsUserOne;
     @OneToMany(mappedBy = "shipsUserTwo")
     private BoardShipsGame boardShipsUserTwo;
 
-    public ShipShipsGame(int shipSize, boolean shipDestroyed, boolean isTop, boolean isRight, boolean isLeft,boolean isDown, PointShipsGame point) {
+
+    public ShipShipsGame(int shipSize, List<PointShipsGame> localization, boolean shipDestroyed) {
         this.shipSize = shipSize;
+        this.localization = localization;
         this.shipDestroyed = shipDestroyed;
-        this.isTop = isTop;
-        this.isRight = isRight;
-        this.isDown = isDown;
-        this.isLeft = isLeft;
-        this.point = point;
     }
 }
