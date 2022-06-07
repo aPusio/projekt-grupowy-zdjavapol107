@@ -1,9 +1,28 @@
 package com.sda.zdjavapol107.szubienica;
 
+import com.sda.zdjavapol107.HibernateFactory;
+import com.sda.zdjavapol107.szubienica.bazaDanych.DatabaseSloganInsert;
+import com.sda.zdjavapol107.szubienica.repository.dao.HangmanGameDao;
+import com.sda.zdjavapol107.szubienica.repository.dao.HangmanUserDao;
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanGame;
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanUser;
+import com.sda.zdjavapol107.szubienica.service.GameService;
+import com.sda.zdjavapol107.szubienica.service.GameStart;
+import com.sda.zdjavapol107.szubienica.service.SessionFactoryService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import java.util.Scanner;
 
 public class HangmanApp {
     public static void main(String[] args) {
+
+        HibernateFactory hibernateFactory = new HibernateFactory();
+        SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
+        HangmanUserDao hangmanUserDao = new HangmanUserDao(sessionFactory);
+
+        DatabaseSloganInsert.run();
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -21,6 +40,7 @@ public class HangmanApp {
         String next;
         boolean exit = false;
 
+
         while (!exit) {
             System.out.println(szubienica);
 
@@ -33,29 +53,39 @@ public class HangmanApp {
             next = scanner.next();
 
             switch (next) {
-                case "1" : {
-                    System.out.println("nowa gra");
+                case "1": {
+                    System.out.println("Enter Your Nickname...");
+                    String name = scanner.next();
+
+                    HangmanUser user = new HangmanUser(name);
+                    hangmanUserDao.save(user);
+
+                    GameStart gameStart = new GameStart();
+                    gameStart.start();
+
+                    HangmanGameDao hangmanGameDao = new HangmanGameDao(SessionFactoryService.getSessionFactory());
+                    hangmanGameDao.save(new HangmanGame(user,false));
+
                     break;
                 }
-                case "2" : {
+                case "2": {
                     System.out.println("wczytaj gre");
                     break;
                 }
-                case "3" : {
+                case "3": {
                     System.out.println("ranking graczy");
                     break;
                 }
-                case "4" : {
+                case "4": {
                     exit = true;
                     break;
                 }
-                default : {
+                default: {
                     System.out.println("Wybierz ponownie.");
                     break;
                 }
             }
         }
-
 
 
     }
