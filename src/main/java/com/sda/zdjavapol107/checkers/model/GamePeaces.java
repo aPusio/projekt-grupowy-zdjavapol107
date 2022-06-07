@@ -36,4 +36,14 @@ public class GamePeaces {
         this.inGame = inGame;
         this.game = game;
     }
+
+    public GamePeaces(Player player, Character color, boolean isDame, boolean inGame, Integer positionXAxis, Integer positionYAxis, Game game) {
+        this.player = player;
+        this.color = color;
+        this.isDame = isDame;
+        this.inGame = inGame;
+        this.positionXAxis = positionXAxis;
+        this.positionYAxis = positionYAxis;
+        this.game = game;
+    }
 }
