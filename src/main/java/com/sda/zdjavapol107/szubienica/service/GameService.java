@@ -195,6 +195,9 @@ public class GameService {
             System.out.println("3. Wyjdz z gry  :");
             String type = keyboard.nextLine();
 
+
+           List<String> sloganList = new ArrayList<>();
+
             switch (type) {
 
                 case "1": {

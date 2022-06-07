@@ -16,15 +16,6 @@ import java.util.Scanner;
 public class HangmanApp {
     public static void main(String[] args) {
 
-        HibernateFactory hibernateFactory = new HibernateFactory();
-        SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
-        HangmanUserDao hangmanUserDao = new HangmanUserDao(sessionFactory);
-
-        DatabaseSloganInsert.run();
-
-
-        Scanner scanner = new Scanner(System.in);
-
         String szubienica = "      _________\n" +
                 "     |/        |\n" +
                 "     |         |\n" +
@@ -36,12 +27,22 @@ public class HangmanApp {
                 " ____|____    / \\" +
                 "__SZUBIENICA__\n";
 
+        HibernateFactory hibernateFactory = new HibernateFactory();
+        SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
+        HangmanUserDao hangmanUserDao = new HangmanUserDao(sessionFactory);
+
+        DatabaseSloganInsert.run();
+
+
+        Scanner scanner = new Scanner(System.in);
+
+
         String next;
         boolean exit = false;
 
+        System.out.println(szubienica);
 
         while (!exit) {
-            System.out.println(szubienica);
 
             System.out.println();
             System.out.println("1. NOWA GRA");
@@ -88,3 +89,4 @@ public class HangmanApp {
 
     }
 }
+

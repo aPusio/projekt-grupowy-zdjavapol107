@@ -26,7 +26,7 @@ public class DatabaseSloganInsert {
 
         List<String> slogans = new ArrayList<>();
 
-        slogans = List.of("filiżanka", "czajnik", "talerz", "widec", "łyżka", "nożyce", "półmisek", "chlebak",
+        slogans = List.of("filiżanka", "czajnik", "talerz", "widelec", "łyżka", "nożyce", "półmisek", "chlebak",
                 "garnek", "patelnia", "mikrofalówka", "toster", "lodówka", "gofrownica", "telewizor", "kanapa", "podłoga",
                 "laptop", "komputer", "myszka", "klawiatura", "monitor", "podkładka", "stolik", "dywan", "krzesło",
                 "poduszka", "żyrandol", "komoda", "abażur", "parapet", "stojak", "książka", "mydelniczka", "szczoteczka",

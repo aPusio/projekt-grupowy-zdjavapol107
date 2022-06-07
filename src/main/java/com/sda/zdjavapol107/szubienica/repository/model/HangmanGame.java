@@ -7,8 +7,11 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hsqldb.rights.User;
 
+import java.util.HashSet;
 import java.util.List;
-@Entity
+import java.util.Set;
+
+@Entity(name = "join")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -18,11 +21,14 @@ public class HangmanGame {
     private long id;
     @OneToOne
     private HangmanUser gameUser;
-   // private List<HangmanSlogan> slogans;
+    @ManyToMany //(mappedBy = "join")
+    private Set<HangmanSlogan> slogans = new HashSet<>();
     private boolean gameStatus;
 
     public HangmanGame(HangmanUser gameUser,  boolean gameStatus) {
         this.gameUser = gameUser;
         this.gameStatus = gameStatus;
     }
+
+
 }
