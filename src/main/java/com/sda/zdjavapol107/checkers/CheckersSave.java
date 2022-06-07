@@ -27,6 +27,12 @@ public class CheckersSave {
         MoveDao moveDao = new MoveDao(sessionFactory);
         TournamentDao tournamentDao = new TournamentDao(sessionFactory);
 
+        tournamentDao.save(tournament);
+        playerDao.save(playerOne);
+        playerDao.save(playerTwo);
+        gameDao.save(game);
+        gamePeacesMap.values().forEach(gamePeacesDao::save);
+        setOfMoves.forEach(moveDao::save);
     }
 
     private Tournament convertTournamentToEntity(CheckersTournament checkersTournament) {
