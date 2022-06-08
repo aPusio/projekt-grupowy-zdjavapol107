@@ -17,9 +17,6 @@ public class TournamentDao extends EntityDao<Tournament> {
         session.close();
         return tournament;
     }
-
-
-
 }
 
 
