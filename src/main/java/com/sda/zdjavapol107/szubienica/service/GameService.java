@@ -28,7 +28,7 @@ public class GameService {
         return hangmanSloganDao;
     }
 
-    public String rollRandomSlogan() {
+    public HangmanSlogan rollRandomSlogan() {
         HibernateFactory hibernateFactory = new HibernateFactory();
         SessionFactory sessionFactory = hibernateFactory.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -39,7 +39,7 @@ public class GameService {
         transaction.commit();
 
         session.close();
-        return randomSlogan.getName();
+        return randomSlogan;
     }
 
     public boolean getPlayerGuess(Scanner keyboard, String slogan, List<Character> playerGuesses) {

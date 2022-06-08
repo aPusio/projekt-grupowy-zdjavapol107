@@ -1,4 +1,4 @@
-package com.sda.zdjavapol107.szubienica.bazaDanych;
+package com.sda.zdjavapol107.szubienica.dataBaseInsert;
 
 import com.sda.zdjavapol107.HibernateFactory;
 import com.sda.zdjavapol107.szubienica.repository.dao.HangmanSloganDao;
@@ -47,5 +47,4 @@ public class DatabaseSloganInsert {
         transaction.commit();
         session.close();
     }
-
 }

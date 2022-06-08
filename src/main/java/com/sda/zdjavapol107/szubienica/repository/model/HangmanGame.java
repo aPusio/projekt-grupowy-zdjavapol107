@@ -18,12 +18,11 @@ public class HangmanGame {
     private long id;
     @OneToOne
     private HangmanUser gameUser;
-    @OneToMany(mappedBy = "hangmanGame")
-    private List<HangmanSlogan> slogans;
-    private boolean gameStatus;
+    @OneToOne
+    private HangmanSlogan slogan;
 
-    public HangmanGame(HangmanUser gameUser,  boolean gameStatus) {
+    public HangmanGame(HangmanUser gameUser, HangmanSlogan slogan) {
         this.gameUser = gameUser;
-        this.gameStatus = gameStatus;
+        this.slogan = slogan;
     }
 }
