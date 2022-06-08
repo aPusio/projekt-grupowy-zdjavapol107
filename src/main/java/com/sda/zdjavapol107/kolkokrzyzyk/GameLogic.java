@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class GameLogic {
 
-
     public static void start() {
         char[][] board = new char[3][3];
         int movesCount = 0;
