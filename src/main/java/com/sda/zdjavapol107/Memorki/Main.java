@@ -118,13 +118,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        while (true){
+        while (true) {
             System.out.println("Press N for new game or Q to quit");
             String nq = sc.nextLine();
-            if (nq.equals("q")){
+            if (nq.equals("q")) {
                 System.out.println("Exitting");
                 break;
-            }else if (nq.equals("n")){
+            } else if (nq.equals("n")) {
 
                 shuffling();
                 for (int i = 0; i < 4; i++) {
@@ -137,7 +137,7 @@ public class Main {
                 checkInput(elements);
                 break;
 
-            }else{
+            } else {
                 System.out.println("Invalid Character");
                 continue;
             }
