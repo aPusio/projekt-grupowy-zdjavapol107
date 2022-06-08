@@ -16,7 +16,7 @@ import java.util.Set;
 public class Tournament {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @OneToMany(mappedBy = "tournament")
     private Set<Player> players;
     private Integer playerOneScore;

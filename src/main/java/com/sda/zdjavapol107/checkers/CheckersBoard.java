@@ -23,10 +23,9 @@ public class CheckersBoard {
         this.playerTwo = playerTwo;
         checkersBoard = generateNewBoard();
         checkersTournament = new CheckersTournament();
-        printBoard();
     }
 
-    private void printBoard() {
+    public void printBoard() {
         for (int i = 0; i < 8; i++) {
             System.out.printf("%c %s\n", (char) 65 + i, Arrays.deepToString(checkersBoard[i]).replaceAll("null", "_"));
         }

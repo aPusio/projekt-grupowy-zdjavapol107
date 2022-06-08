@@ -31,5 +31,13 @@ public abstract class EntityDao<T> {
         return Optional.ofNullable(entity);
     }
 
+    public void update(T entity) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(entity);
+        transaction.commit();
+        session.close();
+    }
+
 
 }
