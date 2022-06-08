@@ -2,6 +2,7 @@ package com.sda.zdjavapol107;
 
 
 import com.sda.zdjavapol107.checkers.Checkers;
+import lombok.extern.log4j.Log4j2;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
