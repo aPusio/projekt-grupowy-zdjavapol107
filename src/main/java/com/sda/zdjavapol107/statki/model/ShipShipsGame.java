@@ -19,16 +19,17 @@ public class ShipShipsGame {
     private int shipId;
     private int shipSize;
     boolean shipDestroyed;
+
     @ManyToOne
-    List<PointShipsGame> localization;
+    private PointShipsGame localization;
 
-    @OneToMany(mappedBy = "shipsUserOne")
-    private BoardShipsGame boardShipsUserOne;
-    @OneToMany(mappedBy = "shipsUserTwo")
-    private BoardShipsGame boardShipsUserTwo;
+    @ManyToMany(mappedBy = "shipsUserOne")
+    private List<BoardShipsGame> boardShipsUserOne;
+    @ManyToMany(mappedBy = "shipsUserTwo")
+    private List<BoardShipsGame> boardShipsUserTwo;
 
 
-    public ShipShipsGame(int shipSize, List<PointShipsGame> localization, boolean shipDestroyed) {
+    public ShipShipsGame(int shipSize, PointShipsGame localization, boolean shipDestroyed) {
         this.shipSize = shipSize;
         this.localization = localization;
         this.shipDestroyed = shipDestroyed;

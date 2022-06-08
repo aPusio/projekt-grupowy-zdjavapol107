@@ -19,8 +19,10 @@ public class UserShipsGame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @OneToMany(mappedBy = "userOne")
     private List<BoardShipsGame> boardShipsGame;
+
     @OneToMany(mappedBy = "userTwo")
     private List<BoardShipsGame> boardShipsGame2;
     private String userName;
