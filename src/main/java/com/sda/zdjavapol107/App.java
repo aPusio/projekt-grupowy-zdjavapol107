@@ -1,13 +1,18 @@
 package com.sda.zdjavapol107;
 
-import com.sda.zdjavapol107.kolkokrzyzyk.Logic;
+import com.sda.zdjavapol107.kolkokrzyzyk.GameLogic;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.Scanner;
 
 
+@Log4j2
 public class App {
+//    private static final Logger log = org.apache.logging.log4j.LogManager.getLogger(App.class);
+
     public static void main(String[] args) {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -20,12 +25,13 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         int gameNumber = scanner.nextInt();
+        log.info("GAME NUMBER !!!!! {}, {}",gameNumber, "THIS WILL BE ARG");
         boolean exit = false;
 
         for (int i = 0;  exit!=true; i++) {
             switch (gameNumber) {
                 case 1:
-                    Logic.start();
+                    GameLogic.start();
                     break;
                 case 2:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
