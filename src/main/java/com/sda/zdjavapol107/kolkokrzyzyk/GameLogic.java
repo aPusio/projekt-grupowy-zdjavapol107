@@ -1,5 +1,6 @@
 package com.sda.zdjavapol107.kolkokrzyzyk;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameLogic {
@@ -17,7 +18,9 @@ public class GameLogic {
             try {
                  isMoveWasCorrect = performMove(board, activePlayerSymbol);
             }catch (ArrayIndexOutOfBoundsException exception){
-                System.out.println("Podaj właściwą liczbę");
+                System.out.println("Podaj właściwą liczbę.");
+            }catch (InputMismatchException exception){
+                System.out.println("Musisz podać liczbę.");
             }
 
             if (isMoveWasCorrect) {
