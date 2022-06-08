@@ -12,10 +12,9 @@ class GameServiceTest {
     void shouldPrintWordWithTypedLetters() {
         //given
         GameService gameService = new GameService();
-        Boolean result = gameService.printWordState("kura", List.of('k', 'u'));
         //when
-
+        Boolean result = gameService.printWordState("kura", List.of('k', 'u', 'r', 'a'));
         //then
-        //assertEquals("KU__", );
+        assertEquals(true, result);
     }
 }
