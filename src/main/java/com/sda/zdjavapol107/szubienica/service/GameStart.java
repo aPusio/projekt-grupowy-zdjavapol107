@@ -124,13 +124,13 @@ public class GameStart {
                 System.out.println("|");
                 System.out.println("|");
                 System.out.println("PRZEGRAŁEŚ");
-                System.out.println("Prawidłowe hasło to: " + slogan);
+                System.out.println("PRAWIDŁOWE HASŁO TO: " + slogan);
                 break;
             }
 
-            System.out.println("1. Podaj litere :");
-            System.out.println("2. Podaj haslo  :");
-            System.out.println("3. Opuść rozgrywkę  :");
+            System.out.println("1. PODAJ LITERE :");
+            System.out.println("2. PODAJ HASLO  :");
+            System.out.println("3. OPUSC ROZGRYWKE  :");
             String type = keyboard.nextLine();
 
             switch (type) {
@@ -140,7 +140,7 @@ public class GameStart {
                         wrongCount++;
                     }
                     if (gameService.printWordState(slogan, playerGuesses)) {
-                        System.out.println("Brawo !");
+                        System.out.println("BRAWO !");
                         slogan = gameService.rollRandomSlogan().getName();
 //                        System.out.println(slogan);
                         gamePoints++;
@@ -151,10 +151,10 @@ public class GameStart {
 
                 case "2": {
                     System.out.println();
-                    System.out.println("podaj haslo");
+                    System.out.println("PODAJ HASŁO");
                     String next = keyboard.nextLine();
                     if (next.toUpperCase(Locale.ROOT).equals(slogan)) {
-                        System.out.println("Brawo, odgadles cale hasło");
+                        System.out.println("BRAWO ODGADLES CALE HASLO");
                         slogan = gameService.rollRandomSlogan().getName();
 //                        System.out.println(slogan);
                         gamePoints++;

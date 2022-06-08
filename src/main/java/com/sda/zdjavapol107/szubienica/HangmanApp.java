@@ -48,7 +48,7 @@ public class HangmanApp {
 
             switch (next) {
                 case "1": {
-                    System.out.println("Enter Your Nickname...");
+                    System.out.println("ENTER YOUR NICKNAME...");
                     String name = scanner.next();
 
                     HangmanUser user = new HangmanUser(name);
@@ -65,9 +65,10 @@ public class HangmanApp {
                 case "2": {
                     exit = true;
                     break;
+
                 }
                 default: {
-                    System.out.println("Wybierz ponownie.");
+                    System.out.println("WYBIERZ PONOWNIE.");
                     break;
                 }
             }

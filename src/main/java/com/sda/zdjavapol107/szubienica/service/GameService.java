@@ -14,6 +14,7 @@ import java.util.*;
 
 public class GameService {
 
+
     private HibernateFactory hibernateFactory = new HibernateFactory();
     private HangmanSloganDao hangmanSloganDao = new HangmanSloganDao(hibernateFactory.getSessionFactory());
 
@@ -46,8 +47,12 @@ public class GameService {
         System.out.println();
         System.out.println("Podaj literę:");
         String letterGuess = keyboard.nextLine().toUpperCase(Locale.ROOT);
-        playerGuesses.add(letterGuess.charAt(0));
 
+        if (letterGuess.length() != 1){
+            System.out.println("BLAD. PODAJ JEDNA LITERE!");
+        } else {
+            playerGuesses.add(letterGuess.charAt(0));
+        }
         return slogan.contains(letterGuess);
     }
 
