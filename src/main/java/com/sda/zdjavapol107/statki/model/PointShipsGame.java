@@ -3,6 +3,8 @@ package com.sda.zdjavapol107.statki.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -15,15 +17,17 @@ public class PointShipsGame {
     private int pointId;
     private int x; //String
     private int y;
-    @OneToMany(mappedBy = "localization")
-    private ShipShipsGame shipShipsGame;
 
-    @OneToMany(mappedBy = "playBoardUserOne")
+    @OneToMany(mappedBy = "localization")
+    private List<ShipShipsGame> shipShipsGame;
+
+    @ManyToOne
     private BoardShipsGame boardUserOne;
-    @OneToMany(mappedBy = "playBoardUserTwo")
+
+    @ManyToOne
     private BoardShipsGame boardUserTwo;
 
-    @OneToMany(mappedBy = "shootsHistory")
+    @ManyToOne
     private GameHistoryShips gameHistoryShips;
 
     public PointShipsGame(int x, int y) {

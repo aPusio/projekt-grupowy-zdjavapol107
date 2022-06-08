@@ -24,13 +24,9 @@ public class BoardShipsGame {
 
     @OneToMany(mappedBy = "boardUserOne")
     private List<PointShipsGame> playBoardUserOne;
+
     @OneToMany(mappedBy = "boardUserTwo")
     private List<PointShipsGame> playBoardUserTwo;
-
-    @ManyToMany
-    private List<ShipShipsGame> shipsUserOne;
-    @ManyToMany
-    private List<ShipShipsGame> shipsUserTwo;
 
     @OneToOne
     private GameHistoryShips gameHistoryShips;
