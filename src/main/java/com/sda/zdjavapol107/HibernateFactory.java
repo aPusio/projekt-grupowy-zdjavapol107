@@ -1,5 +1,9 @@
 package com.sda.zdjavapol107;
 
+import com.sda.zdjavapol107.kolkokrzyzyk.model.TTTGame;
+import com.sda.zdjavapol107.kolkokrzyzyk.model.TTTMatch;
+import com.sda.zdjavapol107.kolkokrzyzyk.model.TTTMove;
+import com.sda.zdjavapol107.kolkokrzyzyk.model.TTTUser;
 import com.sda.zdjavapol107.statki.model.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -22,6 +26,10 @@ public class HibernateFactory {
 //        configuration.addAnnotatedClass(ShipShipsGame.class);
 //        configuration.addAnnotatedClass(PointShipsGame.class);
 //        configuration.addAnnotatedClass(GameHistoryShips.class);
+        configuration.addAnnotatedClass(TTTGame.class);
+        configuration.addAnnotatedClass(TTTMatch.class);
+        configuration.addAnnotatedClass(TTTMove.class);
+        configuration.addAnnotatedClass(TTTUser.class);
 
         return configuration;
     }

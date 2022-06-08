@@ -1,5 +1,6 @@
 package com.sda.zdjavapol107;
 
+import com.sda.zdjavapol107.kolkokrzyzyk.Logic;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -11,7 +12,7 @@ public class App {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
         Session session = sessionFactory.openSession();
         System.out.println("HELLO!");
-        System.out.println("1. JAKAS GRA");
+        System.out.println("1. KOLKO KRZYZYK");
         System.out.println("2. JAKAS GRA");
         System.out.println("3. STATKI");
         System.out.println("4. JAKAS GRA");
@@ -24,7 +25,7 @@ public class App {
         for (int i = 0;  exit!=true; i++) {
             switch (gameNumber) {
                 case 1:
-                    System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    Logic.start();
                     break;
                 case 2:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
