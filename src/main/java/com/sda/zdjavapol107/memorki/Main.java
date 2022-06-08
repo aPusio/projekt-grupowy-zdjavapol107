@@ -1,4 +1,4 @@
-package com.sda.zdjavapol107.Memorki;
+package com.sda.zdjavapol107.memorki;
 
 import java.util.ArrayList;
 import java.util.Random;
