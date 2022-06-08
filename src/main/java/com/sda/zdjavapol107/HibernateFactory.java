@@ -18,17 +18,17 @@ public class HibernateFactory {
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbc.JDBCDriver");
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
-		configuration.setProperty("hibernate.show_sql", "true");
+//		configuration.setProperty("hibernate.show_sql", "true");
 
         configuration.addAnnotatedClass(HangmanSlogan.class);
         configuration.addAnnotatedClass(HangmanUser.class);
         configuration.addAnnotatedClass(HangmanGame.class);
 
- //       configuration.addAnnotatedClass(UserShipsGame.class);
-   //     configuration.addAnnotatedClass(BoardShipsGame.class);
-//        configuration.addAnnotatedClass(ShipShipsGame.class);
-//        configuration.addAnnotatedClass(PointShipsGame.class);
-//        configuration.addAnnotatedClass(GameHistoryShips.class);
+        configuration.addAnnotatedClass(UserShipsGame.class);
+        configuration.addAnnotatedClass(BoardShipsGame.class);
+        configuration.addAnnotatedClass(ShipShipsGame.class);
+        configuration.addAnnotatedClass(PointShipsGame.class);
+        configuration.addAnnotatedClass(GameHistoryShips.class);
 
         return configuration;
     }

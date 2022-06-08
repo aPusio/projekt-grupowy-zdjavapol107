@@ -1,11 +1,19 @@
 package com.sda.zdjavapol107.szubienica.service;
 
+import com.sda.zdjavapol107.szubienica.repository.model.HangmanSlogan;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class GameStart {
+
+    private HangmanSlogan hangmanSlogan;
+
+    public HangmanSlogan getHangmanSlogan() {
+        return hangmanSlogan;
+    }
 
     public void start(){
 
@@ -15,8 +23,11 @@ public class GameStart {
         List<Character> playerGuesses = new ArrayList<>();
 
         GameService gameService = new GameService();
-        String slogan = gameService.rollRandomSlogan();
-        System.out.println(slogan);
+
+        hangmanSlogan = gameService.rollRandomSlogan();
+
+        String slogan = hangmanSlogan.getName();
+//        System.out.println(slogan);
 
         boolean exit = false;
 
@@ -25,7 +36,6 @@ public class GameStart {
             if (gamePoints == 1) {
                 break;
             }
-
 
             if(wrongCount == 0) {
                 System.out.println("  |-----------");
@@ -114,12 +124,13 @@ public class GameStart {
                 System.out.println("|");
                 System.out.println("|");
                 System.out.println("PRZEGRAŁEŚ");
+                System.out.println("PRAWIDŁOWE HASŁO TO: " + slogan);
                 break;
             }
 
-            System.out.println("1. Podaj litere :");
-            System.out.println("2. Podaj haslo  :");
-            System.out.println("3. Wyjdz z gry  :");
+            System.out.println("1. PODAJ LITERE :");
+            System.out.println("2. PODAJ HASLO  :");
+            System.out.println("3. OPUSC ROZGRYWKE  :");
             String type = keyboard.nextLine();
 
             switch (type) {
@@ -129,9 +140,9 @@ public class GameStart {
                         wrongCount++;
                     }
                     if (gameService.printWordState(slogan, playerGuesses)) {
-                        System.out.println("Brawo !");
-                        slogan = gameService.rollRandomSlogan();
-                        System.out.println(slogan);
+                        System.out.println("BRAWO !");
+                        slogan = gameService.rollRandomSlogan().getName();
+//                        System.out.println(slogan);
                         gamePoints++;
                         break;
                     }
@@ -140,15 +151,16 @@ public class GameStart {
 
                 case "2": {
                     System.out.println();
-                    System.out.println("podaj haslo");
+                    System.out.println("PODAJ HASŁO");
                     String next = keyboard.nextLine();
                     if (next.toUpperCase(Locale.ROOT).equals(slogan)) {
-                        System.out.println("Brawo, odgadles cale hasło");
-                        slogan = gameService.rollRandomSlogan();
-                        System.out.println(slogan);
+                        System.out.println("BRAWO ODGADLES CALE HASLO");
+                        slogan = gameService.rollRandomSlogan().getName();
+//                        System.out.println(slogan);
                         gamePoints++;
                     } else {
                         wrongCount++;
+                        System.out.println("Błędne hasło");
                     }
                     break;
                 }

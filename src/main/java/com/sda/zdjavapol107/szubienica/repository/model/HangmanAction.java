@@ -16,6 +16,4 @@ public class HangmanAction {
     private long id;
     private long idGame;
     private long idMove;
-
-
 }

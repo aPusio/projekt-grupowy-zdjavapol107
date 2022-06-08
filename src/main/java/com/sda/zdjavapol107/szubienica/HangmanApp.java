@@ -1,15 +1,13 @@
 package com.sda.zdjavapol107.szubienica;
 
 import com.sda.zdjavapol107.HibernateFactory;
-import com.sda.zdjavapol107.szubienica.bazaDanych.DatabaseSloganInsert;
+import com.sda.zdjavapol107.szubienica.dataBaseInsert.DatabaseSloganInsert;
 import com.sda.zdjavapol107.szubienica.repository.dao.HangmanGameDao;
 import com.sda.zdjavapol107.szubienica.repository.dao.HangmanUserDao;
 import com.sda.zdjavapol107.szubienica.repository.model.HangmanGame;
 import com.sda.zdjavapol107.szubienica.repository.model.HangmanUser;
-import com.sda.zdjavapol107.szubienica.service.GameService;
 import com.sda.zdjavapol107.szubienica.service.GameStart;
 import com.sda.zdjavapol107.szubienica.service.SessionFactoryService;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.Scanner;
@@ -22,7 +20,6 @@ public class HangmanApp {
         HangmanUserDao hangmanUserDao = new HangmanUserDao(sessionFactory);
 
         DatabaseSloganInsert.run();
-
 
         Scanner scanner = new Scanner(System.in);
 
@@ -40,21 +37,18 @@ public class HangmanApp {
         String next;
         boolean exit = false;
 
-
         while (!exit) {
             System.out.println(szubienica);
 
             System.out.println();
             System.out.println("1. NOWA GRA");
-            System.out.println("2. WCZYTAJ GRE");
-            System.out.println("3. RANKING GRACZY");
-            System.out.println("4. WYJDZ Z GRY");
+            System.out.println("2. WYJDZ Z GRY");
 
             next = scanner.next();
 
             switch (next) {
                 case "1": {
-                    System.out.println("Enter Your Nickname...");
+                    System.out.println("ENTER YOUR NICKNAME...");
                     String name = scanner.next();
 
                     HangmanUser user = new HangmanUser(name);
@@ -64,29 +58,20 @@ public class HangmanApp {
                     gameStart.start();
 
                     HangmanGameDao hangmanGameDao = new HangmanGameDao(SessionFactoryService.getSessionFactory());
-                    hangmanGameDao.save(new HangmanGame(user,false));
+                    hangmanGameDao.save(new HangmanGame(user, gameStart.getHangmanSlogan()));
 
                     break;
                 }
                 case "2": {
-                    System.out.println("wczytaj gre");
-                    break;
-                }
-                case "3": {
-                    System.out.println("ranking graczy");
-                    break;
-                }
-                case "4": {
                     exit = true;
                     break;
+
                 }
                 default: {
-                    System.out.println("Wybierz ponownie.");
+                    System.out.println("WYBIERZ PONOWNIE.");
                     break;
                 }
             }
         }
-
-
     }
 }
