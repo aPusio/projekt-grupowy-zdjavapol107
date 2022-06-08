@@ -17,7 +17,7 @@ public class HangmanSlogan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @ManyToOne
+    @OneToOne(mappedBy = "slogan")
     private HangmanGame hangmanGame;
 
     public HangmanSlogan(String name) {

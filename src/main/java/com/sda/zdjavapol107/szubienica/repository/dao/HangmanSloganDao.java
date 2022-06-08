@@ -9,11 +9,9 @@ import java.util.List;
 
 public class HangmanSloganDao extends HangmanEntityDao<HangmanSlogan> {
 
-
     public HangmanSloganDao(SessionFactory sessionFactory) {
         super(sessionFactory, HangmanSlogan.class);
     }
-
 
     public List getAllSlogans() {
         Session session = sessionFactory.openSession();
@@ -21,7 +19,6 @@ public class HangmanSloganDao extends HangmanEntityDao<HangmanSlogan> {
         List<HangmanSlogan> result = session.createQuery("FROM HangmanSlogan", HangmanSlogan.class).getResultList();
         transaction.commit();
         session.close();
-
         return result;
     }
 }

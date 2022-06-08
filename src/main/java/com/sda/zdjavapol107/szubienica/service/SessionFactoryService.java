@@ -12,5 +12,4 @@ public class SessionFactoryService {
 
         return hibernateFactory.getSessionFactory();
     }
-
 }

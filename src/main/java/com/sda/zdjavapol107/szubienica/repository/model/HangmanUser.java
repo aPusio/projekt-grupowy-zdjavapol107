@@ -1,6 +1,4 @@
 package com.sda.zdjavapol107.szubienica.repository.model;
-
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +16,6 @@ public class HangmanUser {
     private String name;
     @OneToOne(mappedBy = "gameUser")
     private HangmanGame game;
-//    private Long classification;
-
 
     public HangmanUser(String name) {
         this.name = name;

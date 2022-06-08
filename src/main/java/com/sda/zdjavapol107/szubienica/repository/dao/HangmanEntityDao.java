@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 
 import java.util.Optional;
 
-
 public abstract class HangmanEntityDao<T>{
         protected SessionFactory sessionFactory;
         private Class<T> clazz;
@@ -45,8 +44,6 @@ public abstract class HangmanEntityDao<T>{
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
             getById(id).ifPresent(session::delete);
-//        Optional<Author> byId = getById(id);
-//        byId.ifPresent(session::delete);
             transaction.commit();
             session.close();
         }
