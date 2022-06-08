@@ -18,7 +18,8 @@ public class HangmanGame {
     private long id;
     @OneToOne
     private HangmanUser gameUser;
-   // private List<HangmanSlogan> slogans;
+    @OneToMany(mappedBy = "hangmanGame")
+    private List<HangmanSlogan> slogans;
     private boolean gameStatus;
 
     public HangmanGame(HangmanUser gameUser,  boolean gameStatus) {

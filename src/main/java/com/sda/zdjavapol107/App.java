@@ -1,6 +1,5 @@
 package com.sda.zdjavapol107;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.Scanner;
@@ -9,10 +8,11 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
-        Session session = sessionFactory.openSession();
         System.out.println("HELLO!");
         System.out.println("1. JAKAS GRA");
         System.out.println("2. JAKAS GRA");
+        System.out.println("3. STATKI");
+        System.out.println("4. JAKAS GRA");
         System.out.println("3. JAKAS GRA");
         System.out.println("4. SZUBIENICA");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");
@@ -40,7 +40,6 @@ public class App {
                     break;
             }
         }
-        session.close();
         sessionFactory.close();
     }
 }
