@@ -18,6 +18,7 @@ public class Player {
     private Long id;
     @Column(nullable = false)
     private String name;
+    private Character color;
     @ManyToMany(mappedBy = "player", fetch = FetchType.EAGER)
     private Set<Game> games;
     @OneToMany(mappedBy = "player")
@@ -27,8 +28,9 @@ public class Player {
     @ManyToOne
     private Tournament tournament;
 
-    public Player(String name) {
+    public Player(String name, Character color) {
         this.name = name;
+        this.color = color;
     }
 
     public Player(String name, Tournament tournament) {

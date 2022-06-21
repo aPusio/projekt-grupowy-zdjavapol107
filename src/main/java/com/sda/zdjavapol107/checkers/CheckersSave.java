@@ -46,7 +46,7 @@ public class CheckersSave {
     }
 
     private Player convertPlayerToEntity(CheckersPlayer checkersPlayer) {
-        return new Player(checkersPlayer.getPlayerName());
+        return new Player(checkersPlayer.getPlayerName(), checkersPlayer.getColor());
     }
 
     private Game createGameEntity(Player playerOne, Player playerTwo, Tournament tournament) {
@@ -59,11 +59,11 @@ public class CheckersSave {
         Map<Integer, GamePeaces> gamePeacesMap = new HashMap<>();
         Map<Integer, Pawn> pawnMap = checkersBoard.getPawnMap();
         for (int i = 0; i < NUMBER_OF_PAWNS; i++) {
-            if (pawnMap.get(i).getColor() == 'w') {
+            if (pawnMap.get(i).getColor() == playerOne.getColor()) {
                 gamePeacesMap.put(i, new GamePeaces(playerOne, pawnMap.get(i).getColor(), pawnMap.get(i).isDame(),
                         pawnMap.get(i).isInGame(), pawnMap.get(i).getCurrentPosition().getXAxis(),
                         pawnMap.get(i).getCurrentPosition().getYAxis(), game));
-            } else if (pawnMap.get(i).getColor() == 'b') {
+            } else if (pawnMap.get(i).getColor() == playerTwo.getColor()) {
                 gamePeacesMap.put(i, new GamePeaces(playerTwo, pawnMap.get(i).getColor(), pawnMap.get(i).isDame(),
                         pawnMap.get(i).isInGame(), pawnMap.get(i).getCurrentPosition().getXAxis(),
                         pawnMap.get(i).getCurrentPosition().getYAxis(), game));

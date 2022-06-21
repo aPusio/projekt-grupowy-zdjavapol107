@@ -55,12 +55,8 @@ public class CheckersLoad {
 
     private List<CheckersPlayer> convertPlayersToChPlayers (List<Player> players) {
         List<CheckersPlayer> checkersPlayerList = new ArrayList<>();
-        char playerOneColor = players.get(0).getGamePeaces().stream()
-                .findAny().get().getColor();
-        char playerTwoColor = players.get(1).getGamePeaces().stream()
-                .findAny().get().getColor();
-        checkersPlayerList.add(new CheckersPlayer(players.get(0).getName(), playerOneColor));
-        checkersPlayerList.add(new CheckersPlayer(players.get(1).getName(), playerTwoColor));
+        checkersPlayerList.add(new CheckersPlayer(players.get(0).getName(), players.get(0).getColor()));
+        checkersPlayerList.add(new CheckersPlayer(players.get(1).getName(), players.get(1).getColor()));
         return checkersPlayerList;
     }
 }
