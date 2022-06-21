@@ -44,7 +44,7 @@ public class App {
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
                     break;
                 case 5:
-                    Checkers.gameSetup();
+                    Checkers.gameSetup(sessionFactory);
                     break;
                 default:
                     exit = true;

@@ -1,10 +1,12 @@
 package com.sda.zdjavapol107.checkers;
 
+import org.hibernate.SessionFactory;
+
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Checkers {
-    public static void gameSetup() {
+    public static void gameSetup(SessionFactory sessionFactory) {
 
         Scanner scanner = new Scanner(System.in);
         String playerOneName, playerTwoName;
@@ -15,7 +17,7 @@ public class Checkers {
         String playerChoice = scanner.nextLine();
         if (Objects.equals(playerChoice, "y")) {
             System.out.println("Loading last game");
-            CheckersLoad checkersLoad = new CheckersLoad();
+            CheckersLoad checkersLoad = new CheckersLoad(sessionFactory);
             checkersBoard = checkersLoad.loadLastGame();
 //            TODO work in progress
         } else {
@@ -32,7 +34,7 @@ public class Checkers {
             checkersBoard = new CheckersBoard(playerOne, playerTwo);
             checkersBoard.printBoard();
 
-            CheckersSave checkersSave = new CheckersSave();
+            CheckersSave checkersSave = new CheckersSave(sessionFactory);
             checkersSave.saveGame(checkersBoard);
         }
     }

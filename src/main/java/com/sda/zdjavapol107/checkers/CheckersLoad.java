@@ -5,17 +5,27 @@ import com.sda.zdjavapol107.checkers.dao.*;
 import com.sda.zdjavapol107.checkers.model.*;
 import org.hibernate.SessionFactory;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckersLoad {
 
-    SessionFactory sessionFactory = new HibernateFactory().getSessionFactory();
-    PlayerDao playerDao = new PlayerDao(sessionFactory);
-    GameDao gameDao = new GameDao(sessionFactory);
-    GamePeacesDao gamePeacesDao = new GamePeacesDao(sessionFactory);
-    MoveDao moveDao = new MoveDao(sessionFactory);
-    TournamentDao tournamentDao = new TournamentDao(sessionFactory);
+    SessionFactory sessionFactory;
+    PlayerDao playerDao;
+    GameDao gameDao;
+    GamePeacesDao gamePeacesDao;
+    MoveDao moveDao;
+    TournamentDao tournamentDao;
+
+    CheckersLoad(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+        playerDao = new PlayerDao(sessionFactory);
+        gameDao = new GameDao(sessionFactory);
+        gamePeacesDao  = new GamePeacesDao(sessionFactory);
+        moveDao  = new MoveDao(sessionFactory);
+        tournamentDao = new TournamentDao(sessionFactory);
+    }
 
     public CheckersBoard loadLastGame() {
         Tournament tournament = tournamentDao.getLastTournament();
@@ -32,11 +42,11 @@ public class CheckersLoad {
     }
 
     private Game loadLatestGame(List<Game> gameList) {
-        Long id = 0L;
+        LocalDateTime saveDateTime = LocalDateTime.MIN;
         Game game = null;
         for (Game g : gameList) {
-            if (g.getId() > id) {
-                id = g.getId();
+        if (g.getSaveDateAndTime().isAfter(saveDateTime)) {
+                saveDateTime = g.getSaveDateAndTime();
                 game = g;
             }
         }
