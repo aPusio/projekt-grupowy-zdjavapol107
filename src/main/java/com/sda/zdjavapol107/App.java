@@ -1,7 +1,8 @@
 package com.sda.zdjavapol107;
 
+
+import com.sda.zdjavapol107.checkers.Checkers;
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -20,6 +21,7 @@ public class App {
         System.out.println("2. JAKAS GRA");
         System.out.println("3. STATKI");
         System.out.println("4. JAKAS GRA");
+        System.out.println("5. Checkers");
         System.out.println("PODAJ NUMER GRY W KTORA CHCESZ GRAC :)");
 
         Scanner scanner = new Scanner(System.in);
@@ -27,7 +29,7 @@ public class App {
         log.info("GAME NUMBER !!!!! {}, {}",gameNumber, "THIS WILL BE ARG");
         boolean exit = false;
 
-        for (int i = 0;  exit!=true; i++) {
+        for (int i = 0; exit != true; i++) {
             switch (gameNumber) {
                 case 1:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
@@ -40,6 +42,9 @@ public class App {
                     break;
                 case 4:
                     System.out.println("HERE SHOULD BE YOUR GAME ! ");
+                    break;
+                case 5:
+                    Checkers.gameSetup(sessionFactory);
                     break;
                 default:
                     exit = true;
