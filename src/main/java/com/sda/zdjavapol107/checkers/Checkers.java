@@ -22,10 +22,10 @@ public class Checkers {
 //            TODO work in progress
         } else {
             System.out.println("Starting new game");
-//        System.out.println("Player one, please enter your name");
+        System.out.println("Player one, please enter your name");
 //        playerOneName = scanner.nextLine()
             playerOneName = "Gracz nr 1";
-//        System.out.println("Player two, please enter your name");
+        System.out.println("Player two, please enter your name");
 //        playerTwoName = scanner.nextLine();
             playerTwoName = "Gracz nr 2";
 

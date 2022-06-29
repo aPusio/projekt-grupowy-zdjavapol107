@@ -63,4 +63,19 @@ public class CheckersBoard {
         return result;
     }
 
+    public boolean Move(String input, char playerColor) {
+        char[] inputChars = input.toCharArray();
+        if (checkersBoard[inputChars[1]][inputChars[0]] != null) {
+            if (checkersBoard[inputChars[1]][inputChars[0]].getColor() == playerColor) {
+                if (checkersBoard[inputChars[3]][inputChars[2]] == null) {
+                    checkersBoard[inputChars[3]][inputChars[2]] = checkersBoard[inputChars[1]][inputChars[0]];
+                    checkersBoard[inputChars[1]][inputChars[0]] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
 }
