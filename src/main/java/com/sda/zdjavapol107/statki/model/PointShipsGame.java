@@ -15,7 +15,7 @@ public class PointShipsGame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pointId;
-    private int x; //String
+    private int x;
     private int y;
 
     @OneToMany(mappedBy = "localization")

@@ -1,5 +1,10 @@
 package com.sda.zdjavapol107.statki;
 
+import com.sda.zdjavapol107.statki.model.PointShipsGame;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MessagesPrinter {
 
     public void printStartingMenuLabel(){
@@ -86,5 +91,28 @@ public class MessagesPrinter {
         printLineOfSeparator();
         System.out.println("Wprowadzono bledna wartosc + \n");
         printLineOfSeparator();
+    }
+
+    public void printSingleBoard(List <PointShipsGame> bussyPoints) {
+        int[][] boaardTable = new int[10][10];
+        for (int i = 0; i < bussyPoints.size(); i++) {// Zamiana listy na tablice
+            boaardTable[bussyPoints.get(i).getX()-1][bussyPoints.get(i).getY()-1] = 1;
+        }
+        System.out.println("   1 2 3 4 5 6 7 8 9 10");
+        for (int i = 0; i < 10; i++) { // Wy[isujemy tablice
+            if(i!=9) {
+                System.out.print(i + 1 + "  ");
+            }else{
+                System.out.print(i + 1 + " ");
+            }
+            for (int j = 0; j < 10; j++) {
+                if(boaardTable[i][j] == 1){
+                    System.out.print("X ");
+                }else{
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
     }
 }

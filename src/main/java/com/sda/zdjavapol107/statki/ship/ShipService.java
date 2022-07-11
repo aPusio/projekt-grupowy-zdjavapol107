@@ -51,28 +51,28 @@ public class ShipService {
     private boolean checkAvilabilityShips() { // To samo co u gory
         boolean haveShip = true;
         if (choiceShipSize == 1) {
-            if (fourSizeShip != 0) {
+            if (oneSizeShip != 0) {
                 haveShip = true;
             } else {
                 haveShip = false;
                 messagesPrinter.dontHaveAnyMoreShipsOfThatSize();
             }
         } else if (choiceShipSize == 2) {
-            if (threeSizeShip != 0) {
-                haveShip = true;
-            } else {
-                haveShip = false;
-                messagesPrinter.dontHaveAnyMoreShipsOfThatSize();
-            }
-        } else if (choiceShipSize == 3) {
             if (twoSizeShip != 0) {
                 haveShip = true;
             } else {
                 haveShip = false;
                 messagesPrinter.dontHaveAnyMoreShipsOfThatSize();
             }
+        } else if (choiceShipSize == 3) {
+            if (threeSizeShip != 0) {
+                haveShip = true;
+            } else {
+                haveShip = false;
+                messagesPrinter.dontHaveAnyMoreShipsOfThatSize();
+            }
         } else if (choiceShipSize == 4) {
-            if (oneSizeShip != 0) {
+            if (fourSizeShip != 0) {
                 haveShip = true;
             } else {
                 haveShip = false;
@@ -119,6 +119,8 @@ public class ShipService {
             }
             if (isShipPositionOk) {
                 placesShipOnPointsList(sizeOfShip, firstPointShip, shipDirectionEnum);
+            }else{
+                break;
             }
         } while (!endLoopCreatingShip);
     }
@@ -133,19 +135,25 @@ public class ShipService {
                 if ((point.getX() - (shipSize - 1)) > 0) 
                 {
                     for (int i = 0; i < busyPointsOnBoard.size(); i++) {
+                        if(isShipPositionOk == false)
+                        {
+                            break;
+                        }
                         for (int j = 0; j < shipSize; j++) {
-                            point.setX(point.getX() - j);
-                            if (point.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
+                            PointShipsGame pointShipsGame = new PointShipsGame(point.getX() - j, point.getY());
+                            if (pointShipsGame.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
                                 isShipPositionOk = false;
-                                messagesPrinter.printSingleLine("W tym miejscu nie może stać kolejny statek");
+                                messagesPrinter.printSingleLine("W tym miejscu nie moze stac kolejny statek");
                                 break;
                             } else {
                                 isShipPositionOk = true;
                             }
                         }
                     }
+                    break;
                 } else {
                     messagesPrinter.printSingleLine("Postawienie statku niemozliwe");
+                    break;
                 }
             }
             case isRight: {//Stawiamy statek w prawo
@@ -153,9 +161,13 @@ public class ShipService {
                 if ((point.getY() + (shipSize - 1)) > 0) // int
                 {
                     for (int i = 0; i < busyPointsOnBoard.size(); i++) {
+                        if(isShipPositionOk == false)
+                        {
+                            break;
+                        }
                         for (int j = 0; j < shipSize; j++) {
-                            point.setY(point.getY() + j);
-                            if (point.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
+                            PointShipsGame pointShipsGame = new PointShipsGame(point.getX(), point.getY() + j);
+                            if (pointShipsGame.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
                                 isShipPositionOk = false;
                                 messagesPrinter.printSingleLine("W tym miejscu nie może stać kolejny statek");
                                 break;
@@ -164,8 +176,10 @@ public class ShipService {
                             }
                         }
                     }
+                    break;
                 } else {
                     messagesPrinter.printSingleLine("Postawienie statku niemozliwe");
+                    break;
                 }
             }
             case isDown: {//Stawiamy statek w dół
@@ -173,9 +187,13 @@ public class ShipService {
                 if ((point.getX() + (shipSize - 1)) > 0) // int
                 {
                     for (int i = 0; i < busyPointsOnBoard.size(); i++) {
+                        if(isShipPositionOk == false)
+                        {
+                            break;
+                        }
                         for (int j = 0; j < shipSize; j++) {
-                            point.setX(point.getX() + j);
-                            if (point.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
+                            PointShipsGame pointShipsGame = new PointShipsGame(point.getX() + j, point.getY());
+                            if (pointShipsGame.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
                                 isShipPositionOk = false;
                                 messagesPrinter.printSingleLine("W tym miejscu nie może stać kolejny statek");
                                 break;
@@ -184,17 +202,23 @@ public class ShipService {
                             }
                         }
                     }
+                    break;
                 } else {
                     messagesPrinter.printSingleLine("Postawienie statku niemozliwe");
+                    break;
                 }
             }
             case isLeft: {//Stawiamy statek w lewo
                 if ((point.getY() - (shipSize - 1)) > 0) // int
                 {
                     for (int i = 0; i < busyPointsOnBoard.size(); i++) {
+                        if(isShipPositionOk == false)
+                        {
+                            break;
+                        }
                         for (int j = 0; j < shipSize; j++) {
-                            point.setY(point.getY() - j);
-                            if (point.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
+                            PointShipsGame pointShipsGame = new PointShipsGame(point.getX(), point.getY() - j);
+                            if (pointShipsGame.equals(busyPointsOnBoard.get(i))) { //Czy punkt jest juz zajety
                                 isShipPositionOk = false;
                                 messagesPrinter.printSingleLine("W tym miejscu nie może stać kolejny statek");
                                 break;
@@ -203,15 +227,17 @@ public class ShipService {
                             }
                         }
                     }
+                    break;
                 } else {
                     messagesPrinter.printSingleLine("Postawienie statku niemozliwe");
+                    break;
                 }
             }
-            if (isShipPositionOk) {
-                messagesPrinter.printSingleLine("Statek zostal postawiony");
-            } else {
-                messagesPrinter.printSingleLine("Statek nie moze zostac umieszczony w tym miejscu");
-            }
+        }
+        if (isShipPositionOk) {
+            messagesPrinter.printSingleLine("Statek zostal postawiony");
+        } else {
+            messagesPrinter.printSingleLine("Statek nie moze zostac umieszczony w tym miejscu");
         }
         return (isShipPositionOk);
     }
@@ -238,13 +264,14 @@ public class ShipService {
                 fourSizeShip--;
                 break;
             }
-//      TODO tworzenie obiektu statek
         }
+//      TODO tworzenie obiektu statek
+        messagesPrinter.printSingleBoard(busyPointsOnBoard);
     }
 
     private void settingThePointWhichTheShipIsOccupaing(int shipSize, PointShipsGame point, ShipDirection shipDirectionEnum) {
-        busyPointsOnBoard.add(point);
-        for (int i = 0; i < shipSize; i++) {
+        busyPointsOnBoard.add(new PointShipsGame(point.getX(), point.getY()));
+        for (int i = 0; i < shipSize-1; i++) {
             if (shipDirectionEnum == ShipDirection.isTop) {
                 point.setX(point.getX() - 1);
             } else if (shipDirectionEnum == ShipDirection.isRight) {
@@ -254,7 +281,7 @@ public class ShipService {
             } else {
                 point.setY(point.getY() - 1);
             }
-            busyPointsOnBoard.add(point);
+            busyPointsOnBoard.add(new PointShipsGame(point.getX(), point.getY()));
         }
     }
 
